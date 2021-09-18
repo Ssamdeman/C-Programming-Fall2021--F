@@ -2,7 +2,7 @@
 
 int main (){
     int count =0;
-    charCounter = 0;//live count 
+    char Counter = 0;//live count 
     int ch; // varaible to store chracter road;
 
 //Shift+option  +A is the comment things.  

@@ -18,4 +18,5 @@ int main (void) {
 
 
     //where can I get fileCopy?
+        //I learned that fileCopy is the name of the main fail is failCopy. 
 }
