@@ -7,6 +7,7 @@ int main (void) {
         //Getting a character from Stdin
         //getchar gets from ACCIs table and returns (int). getchar need only INT
     c = getchar();
+    
     while (c!= EOF){
         //print the character c;
         putchar(c);
