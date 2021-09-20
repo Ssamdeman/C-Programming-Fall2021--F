@@ -12,9 +12,16 @@ int main() {
 /*  EOF: a special int constant
 representing the end of file (in
 this case, end of standard input) */
-/* So this snippet will accomplished inpute intput3,4 and 2 from HW but
- NOT the in put1 */
+/* Ideas number 1: 
+    So this snippet will accomplished inpute intput3,4 and 2 from HW but
+    NOT the in put1  */
     
+    while(eachCharacter != EOF){
+        userInputes[i] = eachCharacter;
+        i++;
+        eachCharacter = getchar();
+        
+        
     while(oneCharacter != EOF){
         putchar(oneCharacter);
         oneCharacter = getchar();
