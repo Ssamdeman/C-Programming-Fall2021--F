@@ -25,10 +25,13 @@ this case, end of standard input) */
 /* Ideas number 1: 
     So this snippet will accomplished inpute intput3,4 and 2 from HW but
     NOT the in put1 09-22-2021 13:53:54 */
-    
+
+//09-23-2021 11:28:52 use getline(own function) funtion where I will save the all the inputes.
+/* -------------------------------------------------------------------------- */
+/* 09-23-2021 11:29:03 so this program does not work becuase it does not take care of special case. So 
+   so we need to get line first and read the from the line.
     while(1){
         eachCharacter = getchar();
-
         if (eachCharacter == EOF){
             userInputes[1] = '\0';
             break;
@@ -44,16 +47,18 @@ this case, end of standard input) */
             }
         } 
     }  
+ */
+/* -------------------------------------------------------------------------- */
 
-   /*  while(eachCharacter != EOF && eachCharacter == '\0' ){
+    /*  while(eachCharacter != EOF && eachCharacter == '\0' ){
 
         eachCharacter = getchar();
         userInputes[i] = eachCharacter;
         i++; */
-        ///putchar(eachCharacter);
+    ///putchar(eachCharacter);
     /// @09/21/2021 check 09212021Part1 in week2 that help with Hw1.
-    
-   /*  char lastElement = userInputes[i];
+
+    /*  char lastElement = userInputes[i];
     printf("Priting this %c \n",lastElement );
     userInputes[i] = '\0';
     if (lastElement != '\0'){
@@ -75,4 +80,3 @@ this case, end of standard input) */
     printf("%s \n",userInpute );
     //putchar(userInpute "\n"); */
 }
-
