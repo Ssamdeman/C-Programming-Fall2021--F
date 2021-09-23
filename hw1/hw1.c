@@ -6,7 +6,8 @@
  So use get line funtion. Do not import any function just 
  */
 
-//This function allows to convert small letter to the big one.
+//This function allows to convert small letter to the big one
+//09-22-2021 15:34:30 Hold on it cause my basic function is not taking any inpute.
 /* char touUpper (char OneCharacter) {
     char  
 
@@ -16,14 +17,7 @@ int main(void) {
 
     char userInputes[MAXLENGTH];
     int eachCharacter; // this is from Stdn input where a character is uses ASCII code
-    int i =0; // keeping track of userInputes
-
-/*  This is not working. this is just a solution too.
-  for (eachCharacter = getchar();(eachCharacter = EOF);i++){
-       userInputes[i] = eachCharacter;
-       printf("print every latter; %s", userInputes);
-   }
- */
+    int i =0; // keeping track of userInputes index
 
 /*  EOF: a special int constant
 representing the end of file (in
@@ -32,20 +26,24 @@ this case, end of standard input) */
     So this snippet will accomplished inpute intput3,4 and 2 from HW but
     NOT the in put1 09-22-2021 13:53:54 */
     
-
     while(1){
         eachCharacter = getchar();
-        userInputes[i] = eachCharacter;
-        i++;
-        if (eachCharacter != EOF && eachCharacter == '\0' ){
-            printf("%c", userInputes[i]);
+
+        if (eachCharacter == EOF){
+            userInputes[1] = '\0';
             break;
         }
-        
-       
-        }
-    
-
+        else{
+            if (eachCharacter == '\n' ){
+            userInputes[i] = '\0';
+            break;
+            }
+            else{
+                userInputes[i] = eachCharacter;
+                i++;  
+            }
+        } 
+    }  
 
    /*  while(eachCharacter != EOF && eachCharacter == '\0' ){
 
@@ -55,13 +53,12 @@ this case, end of standard input) */
         ///putchar(eachCharacter);
     /// @09/21/2021 check 09212021Part1 in week2 that help with Hw1.
     
-    char lastElement = userInputes[i];
+   /*  char lastElement = userInputes[i];
     printf("Priting this %c \n",lastElement );
     userInputes[i] = '\0';
     if (lastElement != '\0'){
 
-
-    } 
+    }  */
 
     
     /* Work on this later.
@@ -71,7 +68,7 @@ this case, end of standard input) */
         printf("Empty String");
     
  */
-   printf("I am herer %s \n", userInputes);
+   printf("I am here %s \n", userInputes);
 
     /*  
     int userInpute = getchar();
