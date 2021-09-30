@@ -19,12 +19,15 @@
 } */
 
 
+
 int main(void){
     /* 09-28-2021 12:31:32 my code taking an inpute and print it out in corrent order.
-     The problem is to making the letter capital. */
+     The problem is to making the letter capital. 
+     09-29-2021 10:13:45 noted: userInputes[i-1] is get the last chracter of the array.*/
     char userInputes[MAXLENGTH];
     int eachCharacter; // this is from Stdn input where a character is uses ASCII code
     int i = 0; // keeping track of userInputes index
+    int convertedCapitalLetter;
 
     if ((eachCharacter = getchar()) == '\n') {
         printf("%c",eachCharacter );
@@ -37,15 +40,14 @@ int main(void){
             eachCharacter = getchar(); 
         }
     userInputes[i] = '\0';
-    
-    for(int j = 0; j < i; j++){
-        printf("%s", userInputes[i]);
 
-    }
-
-    
+    // 32 is the # for differenece between small letter and cappital letter.
+    if (userInputes[i-1] >= 97 && userInputes[i-1] <= 122){ // tells if the last character is a lower alphabet.
+        convertedCapitalLetter = userInputes[i-1] - 32;
+        userInputes[i-1] = convertedCapitalLetter;
     }
     
+    }
 
     printf("%s \n", userInputes);
 }   
