@@ -7,12 +7,17 @@ int main (void){
     // Get the first two input.
     char eachCharacter;
     char userInputes[MAXVALUE];
-
-    while ((eachCharacter = getchar()) != '\n'){
-        
-
+    int i; // tracker for user inputes
+    eachCharacter = getchar();
+    if (eachCharacter != '\n' && eachCharacter != EOF){
+        printf("I am here");
+        while (eachCharacter != '\n'){
+        userInputes[++i] = eachCharacter;
+        printf("I am here2");
+        eachCharacter = getchar();
+        }
     }
-
+    
 
 
 
