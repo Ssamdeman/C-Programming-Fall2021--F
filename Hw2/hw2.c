@@ -8,22 +8,22 @@ int main (void){
     char eachCharacter;
     char userInputes[MAXVALUE];
     int i; // tracker for user inputes
-    eachCharacter = getchar();
-    if (eachCharacter != '\n' && eachCharacter != EOF){
+     printf("I am here \n");
+    if ((eachCharacter = getchar()) == '\n') {
+        printf("%c",eachCharacter );
+        userInputes[1] = '\0';
         printf("I am here");
-        while (eachCharacter != '\n'){
-        userInputes[++i] = eachCharacter;
-        printf("I am here2");
-        eachCharacter = getchar();
-        }
     }
-    
+    else{
+        while(eachCharacter != EOF){
+            userInputes[i] = eachCharacter;
+            ++i;
+            eachCharacter = getchar(); 
+        }
+    userInputes[i] = '\0';
+    }
+    printf("I am here %s \n", userInputes); 
 
-
-
-
-    int a ; /// First  arary but to complete this I need the input numbes.
-    int b ; /// Second Array.
 
     
 
