@@ -25,12 +25,10 @@ int main (void){
             eachCharacter = getchar();
         }
     userInputes[i] = '\0';
-
-    for (int k = i-1; k >= 0; k--){
-        tempholder[p] = userInputes[k];
-        p++;
+    for (int k = i-1; k >= 0; k++){
+        tempholder[k] = userInputes[k];
         }           
     }
-    tempholder[p] = '\0';
+    tempholder[k] = '\0';
     printf("%s",tempholder);
 }
