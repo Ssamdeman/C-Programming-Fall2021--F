@@ -9,13 +9,12 @@ int main (void){
     //10-12-2021 23:02:09 I have used from stackoverflow. Let's see what they will say. 
     char eachCharacter;
     char userInputes[MAXVALUE];
-    int i; // tracker for user inputes
+    int i = 0; // tracker for user inputes
     eachCharacter = getchar();
-
+    
     if (eachCharacter == '\n') {
         printf("%c",eachCharacter );
-        userInputes[1] = '\0';
-        printf("I am here");
+        userInputes[i] = '\0';
     }
     else{
         while(eachCharacter != EOF){
@@ -25,6 +24,13 @@ int main (void){
         }
     userInputes[i] = '\0';
     }
-    printf("I am here %s \n", userInputes);
+    int* pt;
+    pt = &i;
+    for (int k = 0; k < i; k++){
+        printf("%d -- %c\n",k, userInputes[k])
+        
+    }
+    
+    printf("\n%c and the number of element %d\n", userInputes, i);
 
 }
