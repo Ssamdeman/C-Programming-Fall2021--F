@@ -4,8 +4,8 @@
 int main (){
 
     char array [1];
-    char c;
-    c = getchar();
-    array[0] = c;
-    printf("I am here %c", c);
+    char m_n;
+     m_n = getchar();
+    array[0] =  m_n;
+    printf("I am here %c",  m_n);
 }

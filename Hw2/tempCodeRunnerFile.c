@@ -1,4 +1,8 @@
-for (int k = 0; k < i; k++){
-        printf("%d -- %c\n", k, userInputes[k]);
-
-    } 
+ while(str[q] != '\n') { /// if str = new line --> I collected the first two value.
+       if(str[q] == ' '){
+           m_n[q] = str[q];
+       }
+       q++;
+    }
+    m_n[q] = '\0';
+    printf("%s \n", m_n);
