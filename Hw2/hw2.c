@@ -12,7 +12,7 @@ int main (void){
     scanf();
      
     for(int k = 0; k < i; k++){
-        printf("%d and  %c ", k, str[k]);
+        printf("%d and  %c ", k, all_input[k]);   
 
     }
 
