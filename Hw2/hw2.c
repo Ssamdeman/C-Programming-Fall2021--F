@@ -4,26 +4,71 @@
 
 
 //10-14-2021 11:31:06 We can use SCANF(%d,  %value.)
+    // 10-15-2021 16:39:34 I was able to get the length of the array.
 int main (void){
-/* 
-    int arrayA [MAXVALUE];
-    int arrayB [MAXVALUE];
+
+    
     int n = 0; /// length of the array A;
     int m = 0; // length fo the array B;
 
-     */
+    int i = 0; // intertator for array A
+    int k = 0;  /// iterrator for array B
+    
 
-    int x = 0;
-    printf("Enter name: ");
+    int x; // main savefor the for input
+
+    printf("Enter chracter: ");
+
+    
+    //if( x == ' ') printf("I am here \n");
+
+    /// geting the firs line.
+    while((scanf("%d", &x)) != EOF){
+
+        if(x >= 0 && x <= MAXVALUE) n = x;
+        scanf("%d", &x);
+        if(x >= 0 && x <= MAXVALUE) m = x;
+        
+        if ( (m >= 0 && m <= MAXVALUE) && (n >= 0 && n <= MAXVALUE)) {
+         break;
+        
+         }
+    }
+
     scanf("%d", &x);
 
-   printf("Entered Numbers: %d\n", x);
+    int arrayA [n];
+    // reading the second line for getting all the A.
+    while(x != EOF){
+        printf("I am here");
+        arrayA [i] = x;
+        i++;
+        scanf("%d", &x);
+        if(i == n) break;
+    }
+
+    int arrayB [m];
+    //reading the third line for getting all the A.
+    while((scanf("%d", &x)) != EOF){
+        arrayB [k] = x;
+        k++;
+        scanf("%d", &x);
+        if(k == m) break;
+    }
+    // sort the two arrays.
+    int sortedArray[n+m];
+
+/*     for(int j = 0; j < (n+m); j++){
+        if (arrayA[j] <= arrayB[j] || arrayB[j] <= arrayA[j]);
+    }
+ */
+
+   printf("Entered numbers: %d and %d \n", n, m);
 
    
    return(0);
     
    
-
 
     
 
@@ -37,6 +82,13 @@ int main (void){
 /* -------------------------------------------------------------------------- */
 /*                             10-15-2021 09:29:15  SIDE NOTES
     scanf("%d", &x); /// without the &, the scan func works but it does not save it. 
+    this funtion takes space and new line;
+    maximun digit is 11 digits.
+
+    input:
+2 3 
+1,3 
+2,4,6 
 
 /* -------------------------------------------------------------------------- */
 
