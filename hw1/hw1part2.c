@@ -41,7 +41,7 @@ int main(void){
             eachCharacter = getchar(); 
         }
     }
-    userInputes[i] = '\0'; /// last digit.
+    userInputes[i] = '\0';/// last digit.
 
     // 32 is the # for differenece between small letter and cappital letter.
     if (userInputes[i-2] >= 97 && userInputes[i-2] <= 122){ // tells if the last character is a lower alphabet.
@@ -49,7 +49,7 @@ int main(void){
         userInputes[i-2] = convertedCapitalLetter;
     }
     
-    printf("%d and %s\n",i ,userInputes);
+    printf("%s\n",userInputes);
 }   
 
 /* -------------------------------------------------------------------------- */
