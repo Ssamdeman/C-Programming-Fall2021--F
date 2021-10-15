@@ -5,12 +5,25 @@
 
 //10-14-2021 11:31:06 We can use SCANF(%d,  %value.)
 int main (void){
-    
-    int x = 0;
+/* 
+    int arrayA [MAXVALUE];
+    int arrayB [MAXVALUE];
+    int n = 0; /// length of the array A;
+    int m = 0; // length fo the array B;
 
-    scanf("%d", x);
-    printf("$d", x);
+     */
+
+    int x = 0;
+    printf("Enter name: ");
+    scanf("%d", &x);
+
+   printf("Entered Numbers: %d\n", x);
+
+   
+   return(0);
     
+   
+
 
     
 
@@ -21,8 +34,11 @@ int main (void){
 
 
 }
+/* -------------------------------------------------------------------------- */
+/*                             10-15-2021 09:29:15  SIDE NOTES
+    scanf("%d", &x); /// without the &, the scan func works but it does not save it. 
 
-
+/* -------------------------------------------------------------------------- */
 
 
 
