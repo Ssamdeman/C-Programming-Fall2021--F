@@ -31,7 +31,7 @@ int main(void){
 
     if ((eachCharacter = getchar()) == '\n') {
         printf("%c",eachCharacter );
-        userInputes[1] = '\0';
+        userInputes[i] = '\0';
     }
     else{
         while(eachCharacter != EOF){
@@ -40,6 +40,7 @@ int main(void){
             eachCharacter = getchar(); 
         }
     userInputes[i] = '\0';
+    printf("%c", userInputes[i-1]);
 
     // 32 is the # for differenece between small letter and cappital letter.
     if (userInputes[i-1] >= 97 && userInputes[i-1] <= 122){ // tells if the last character is a lower alphabet.
@@ -49,7 +50,7 @@ int main(void){
     
     }
 
-    printf("%s \n", userInputes);
+    printf("%s\n", userInputes);
 }   
 
 /* -------------------------------------------------------------------------- */
