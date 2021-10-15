@@ -1,4 +1,5 @@
 #include<stdio.h>
+
 #define MAXLENGTH 1000
 
 
@@ -36,21 +37,19 @@ int main(void){
     else{
         while(eachCharacter != EOF){
             userInputes[i] = eachCharacter;
-            ++i;
+            i++;
             eachCharacter = getchar(); 
         }
-    userInputes[i] = '\0';
-    printf("%c", userInputes[i-1]);
+    }
+    userInputes[i] = '\0'; /// last digit.
 
     // 32 is the # for differenece between small letter and cappital letter.
-    if (userInputes[i-1] >= 97 && userInputes[i-1] <= 122){ // tells if the last character is a lower alphabet.
-        convertedCapitalLetter = userInputes[i-1] - 32;
-        userInputes[i-1] = convertedCapitalLetter;
+    if (userInputes[i-2] >= 97 && userInputes[i-2] <= 122){ // tells if the last character is a lower alphabet.
+        convertedCapitalLetter = userInputes[i-2] - 32;
+        userInputes[i-2] = convertedCapitalLetter;
     }
     
-    }
-
-    printf("%s\n", userInputes);
+    printf("%d and %s\n",i ,userInputes);
 }   
 
 /* -------------------------------------------------------------------------- */
