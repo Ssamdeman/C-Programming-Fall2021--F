@@ -12,13 +12,15 @@ int main (void){
 
     int x; // main savefor the for input
     int t = 0; // for array 3
+    int checker;
+
     /// pointers for all the arrays;
     int* ptone;
     int* pttwo;
     int* ptthree;
 
-    scanf("%d", & n);
-    scanf("%d", & m);
+    scanf("%d ", & n);
+    scanf("%d ", & m);
 
 
    
@@ -38,11 +40,15 @@ int main (void){
     
     for(int i = 0; i < n; i++){
         scanf("%d,", &x);
+        //while((checker = getchar()) != '\n'){}
         *(ptone + i) = x;
     }
     
+    while((checker = getchar()) != '\n'){}
+    
     for(int k = 0; k < m; k++){
         scanf("%d,", &x);
+        //while((checker = getchar()) != '\n'){}
         *(pttwo + k) = x;
     }
 
