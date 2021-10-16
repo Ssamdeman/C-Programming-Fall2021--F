@@ -5,7 +5,7 @@
 int main(void){
     int str[MAXVALUE];
     int i = 0;
-    int ret ;
+    int ret;
 
     while(1){
         int x;
@@ -13,7 +13,7 @@ int main(void){
         if(ret == EOF) break;
         str[i] = x;
         i++;
-
     }
+    printf("%c", str);
 
 }

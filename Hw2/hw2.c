@@ -17,9 +17,6 @@ int main (void){
 
     int x; // main savefor the for input
 
-    printf("Enter chracter: ");
-
-    
     //if( x == ' ') printf("I am here \n");
 
     /// geting the firs line.
@@ -28,31 +25,31 @@ int main (void){
         if(x >= 0 && x <= MAXVALUE) n = x;
         scanf("%d", &x);
         if(x >= 0 && x <= MAXVALUE) m = x;
-        
-        if ( (m >= 0 && m <= MAXVALUE) && (n >= 0 && n <= MAXVALUE)) {
-         break;
-        
+    
+        if ((m >= 0 && m <= MAXVALUE) && (n >= 0 && n <= MAXVALUE)) { 
+            break;
          }
     }
 
-    scanf("%d", &x);
-
+    
     int arrayA [n];
     // reading the second line for getting all the A.
-    while(x != EOF){
-        printf("I am here");
+    
+    while( (scanf("%d", &x)) != EOF) {
+        printf("I am here 1\n");
         arrayA [i] = x;
         i++;
-        scanf("%d", &x);
+        scanf("%d,", &x);
         if(i == n) break;
     }
 
     int arrayB [m];
     //reading the third line for getting all the A.
     while((scanf("%d", &x)) != EOF){
-        arrayB [k] = x;
+        printf("I am here 2\n");
+        arrayB[k] = x;
         k++;
-        scanf("%d", &x);
+        scanf("%d,", &x);
         if(k == m) break;
     }
     // sort the two arrays.
@@ -88,7 +85,7 @@ int main (void){
     input:
 2 3 
 1,3 
-2,4,6 
+2,4,6
 
 /* -------------------------------------------------------------------------- */
 
