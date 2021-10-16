@@ -34,7 +34,7 @@ int main (void){
     int arrayA [n];
     // reading the second line for getting all the A.
     
-    while( (scanf("%d", &x)) != EOF) {
+    while( (scanf("%d,", &x)) != EOF) {
         printf("I am here 1\n");
         arrayA [i] = x;
         i++;
@@ -44,7 +44,7 @@ int main (void){
 
     int arrayB [m];
     //reading the third line for getting all the A.
-    while((scanf("%d", &x)) != EOF){
+    while((scanf("%d,", &x)) != EOF){
         printf("I am here 2\n");
         arrayB[k] = x;
         k++;
@@ -61,7 +61,17 @@ int main (void){
 
    printf("Entered numbers: %d and %d \n", n, m);
 
-   
+   10-16-2021 00:21:54
+    /* 
+    } */
+    
+    int str;
+    for (str = 0; str < n + m - 1; str++) {
+        printf("%d,", *(pointc + str));
+    }
+    if (str != 0) {
+        printf("%d", *(pointc + str));
+    } 
     
    
 
