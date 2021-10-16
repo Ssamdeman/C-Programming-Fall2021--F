@@ -7,7 +7,6 @@
     // 10-15-2021 16:39:34 I was able to get the length of the array.
 int main (void){
 
-    
     int n = 0; /// length of the array A;
     int m = 0; // length fo the array B;
 
@@ -63,7 +62,6 @@ int main (void){
    printf("Entered numbers: %d and %d \n", n, m);
 
    
-   return(0);
     
    
 
@@ -86,9 +84,7 @@ int main (void){
 2 3 
 1,3 
 2,4,6
-
-/* -------------------------------------------------------------------------- */
-
+*/
 
 
 
