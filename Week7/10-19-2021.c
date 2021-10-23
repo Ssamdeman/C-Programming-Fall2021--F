@@ -21,7 +21,7 @@ int main (void){
     p0 = array1[0];
     p1 = array1[1];
 
-    print{"arrays1[0][2] %d\n", *(p0+2)}
+    printf{"arrays1[0][2] %d\n", *(p0+2)}
 
     int* ptarray[2];
     ptarray[0] = a[0];
