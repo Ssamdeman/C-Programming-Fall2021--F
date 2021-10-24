@@ -120,7 +120,7 @@ void printAnySizeArray (char* p, int d, int* size){
     for (i = 0; i < d; i++) n_element = n_element *  size[i];
 
     for(i = 0; i < n_element; i++){
-        printf("values %d^th elemnt %c\n", i, *(p+i*));
+        printf("values %d^th elemnt %c\n", i, *(p+i));
 
     }
 
