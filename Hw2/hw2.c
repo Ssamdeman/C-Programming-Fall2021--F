@@ -20,7 +20,6 @@ int main (void){
 
     /// geting the firs line.
     while((scanf("%d", &x)) != EOF){
-
         if(x >= 0 && x <= MAXVALUE) n = x;
         scanf("%d", &x);
         if(x >= 0 && x <= MAXVALUE) m = x;
