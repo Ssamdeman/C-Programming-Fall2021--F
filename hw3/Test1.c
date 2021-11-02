@@ -3,8 +3,8 @@
 
 int main (){
 
-    int x = 0; 
-    scanf("%d", &x);
+    int x,y = 0; 
+    printf("%d\n", x);
 
-    printf("%d", x);
+    printf("%d \n", y);
 }
