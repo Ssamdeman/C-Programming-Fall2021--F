@@ -155,7 +155,7 @@ void printing2DimenArray(char* p, int M, int N){
     }
 }
 
-/* int main(void){
+int main(void){
 //10-22-2021 12:30:42 One Dimen of array with points
     int a[] = {1,2,3};
     int* pt;
@@ -206,6 +206,6 @@ return 0;
 
 
 }
- */
+
 
 
