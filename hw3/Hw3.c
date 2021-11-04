@@ -25,36 +25,31 @@ int main(void){
 
     
 // Find the saddle point. --- https://tinyurl.com/yhzs3b8l 
-
-for (i = 0; i < num; i++) {
+int p,sm,f,large;
+for (int i = 0; i < n*m; i++) {
        p = 0;
-       sm = a[i][0];
-       for (j = 0; j < num; j++) {
-           if (sm > a[i][j]) {
-               sm = a[i][j];
+       sm = ArrayTwoDimen[i][0];
+       for (int j = 0; j < n*m; j++) {
+           if (sm > ArrayTwoDimen[i][j]) {
+               sm = ArrayTwoDimen[i][j];
                p = j;
            }
        }
-
        large = 0;
-       for (j = 0; j < num; j++) {
-           if (large < a[j][p]) {
-               large = a[j][p];
+       for (int j = 0; j < n*m; j++) {
+           if (large < ArrayTwoDimen[j][p]) {
+               large = ArrayTwoDimen[j][p];
            }
        }
        if (sm == large) {
-           printf("\nValue of saddle point:%d", sm);
+           printf("%d", sm);
            f = 0;
        }
    }
 
    if (f > 0)
-       printf("\nNo saddle point");
+       printf("");
 
    return 0;
 
-
-    
-
-    
 }
