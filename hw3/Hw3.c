@@ -21,8 +21,9 @@ int main(void){
     // 
     for(int i = 0; i < (n*m); i++){
             scanf("%d,", pt+i);
+            printf("%d",)
     }
-
+    
     
 // Find the saddle point. --- https://tinyurl.com/yhzs3b8l 
 int p,sm,f,large;
@@ -36,19 +37,20 @@ for (int i = 0; i < n*m; i++) {
            }
        }
        large = 0;
-       for (int j = 0; j < n*m; j++) {
-           if (large < ArrayTwoDimen[j][p]) {
-               large = ArrayTwoDimen[j][p];
+       for (int k = 0; k < n*m; k++) {
+           if (large < ArrayTwoDimen[k][p]) {
+               large = ArrayTwoDimen[k][p];
+               
            }
        }
        if (sm == large) {
-           printf("%d", sm);
+           printf("Value of saddle point:%d", sm);
            f = 0;
        }
    }
 
    if (f > 0)
-       printf("");
+       printf(" ");
 
    return 0;
 
