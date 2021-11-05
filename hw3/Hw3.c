@@ -10,9 +10,7 @@ int main(void){
         // 1) Get the size of array.---Done 
             //Find  line 1 contains n and m, separated by awhitespace ---DOne
     scanf("%d %d", &n,&m);
-    int ArrayTwoDimen[n][m];
     pt = (int *) malloc((n*m) * sizeof(int));
-    pt = &(ArrayTwoDimen[0][0]);
 
     
 
@@ -20,13 +18,21 @@ int main(void){
 //using a pointer.;---D
     // 
     for(int i = 0; i < (n*m); i++){
-            scanf("%d,", pt+i);
-            printf("%d",)
+        scanf("%d,", (pt+i));
     }
-    
-    
+
+    printf("%d\n", *(pt));
+    printf("%d\n", *(pt +(n)));
+    printf("%d\n", *(pt +(n*2)));
+
+
+
 // Find the saddle point. --- https://tinyurl.com/yhzs3b8l 
-int p,sm,f,large;
+
+
+
+
+/* int p,sm,f,large;
 for (int i = 0; i < n*m; i++) {
        p = 0;
        sm = ArrayTwoDimen[i][0];
@@ -52,6 +58,6 @@ for (int i = 0; i < n*m; i++) {
    if (f > 0)
        printf(" ");
 
-   return 0;
+   return 0; */
 
 }
