@@ -23,33 +23,52 @@ int main(void){
     }
   
 
-    int min, max;
+    int min;
+    int max;
+    int* minPt;
+    int* maxPt;
 
-    int* minPt, maxPt;
-    minPt = (int*) malloc((int) (n) * sizeof(int));
-    maxPt = (int*) malloc((int) (m) * sizeof(int));
-
-
-  for(int l = 0; l < n; l++) {
-    min = *(pt + l*m);
-    for(int k = 0; k < m; k++){
-        if(min > *(pt + k + l * m)) min = *(pt + k + l * m);
-        }
-     *(minPt + l) = min;
-    }
-
-    max = *(pt);
-    
+    minPt = (int*) malloc((int) (n) * sizeof(int)); // for row
+    maxPt = (int*) malloc((int) (m) * sizeof(int)); // for column
 
 
+// min of the row
     for(int l = 0; l < n; l++) {
-        max = *(pt + l*m);
-        for(int k = 0; k < m; k++){
+        min = *(pt + l*m);
+        for(int k = 1; k < m; k++){
             if(min > *(pt + k + l * m)) min = *(pt + k + l * m);
             }
         *(minPt + l) = min;
     }
+    
+    //Finding all the small values int he hwole array
+    int max = *(minPt);
+    for(int q = 1; q < n; q++) {
+        if (*(minPt + q) < max){
+            max = *(minPt + q);
+        }
+    }
+    
+    int temp;
+    for(int i= 0; i < m; i++){
+        temp = max;
+        for (int j = 0; j < n; j++){
+            if(*(pt + i + j*m) > temp) temp = *(pt + i + j*m);
+        }
+        *(maxPt + i) = temp;
+    }
 
+    for (int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++;)
+            if(*(minPt + i)== *(maxPt+j))
+            {
+                printf("%d", *(minPt+i));
+
+            }
+
+    }
+
+    return 0;
 
 
 
@@ -64,36 +83,5 @@ int main(void){
  */
 
 // Find the saddle point. --- https://tinyurl.com/yhzs3b8l 
-
-
-
-
-/* int p,sm,f,large;
-for (int i = 0; i < n*m; i++) {
-       p = 0;
-       sm = ArrayTwoDimen[i][0];
-       for (int j = 0; j < n*m; j++) {
-           if (sm > ArrayTwoDimen[i][j]) {
-               sm = ArrayTwoDimen[i][j];
-               p = j;
-           }
-       }
-       large = 0;
-       for (int k = 0; k < n*m; k++) {
-           if (large < ArrayTwoDimen[k][p]) {
-               large = ArrayTwoDimen[k][p];
-               
-           }
-       }
-       if (sm == large) {
-           printf("Value of saddle point:%d", sm);
-           f = 0;
-       }
-   }
-
-   if (f > 0)
-       printf(" ");
-
-   return 0; */
 
 }
