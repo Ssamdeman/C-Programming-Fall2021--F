@@ -10,6 +10,7 @@ int main(void){
         // 1) Get the size of array.---Done 
             //Find  line 1 contains n and m, separated by awhitespace ---DOne
     scanf("%d %d", &n,&m);
+    // m = mumber of column; n = number of rows;
     pt = (int *) malloc((n*m) * sizeof(int));
 
     
@@ -20,12 +21,47 @@ int main(void){
     for(int i = 0; i < (n*m); i++){
         scanf("%d,", (pt+i));
     }
+  
 
-    printf("%d\n", *(pt));
-    printf("%d\n", *(pt +(n)));
-    printf("%d\n", *(pt +(n*2)));
+    int min, max;
+
+    int* minPt, maxPt;
+    minPt = (int*) malloc((int) (n) * sizeof(int));
+    maxPt = (int*) malloc((int) (m) * sizeof(int));
 
 
+  for(int l = 0; l < n; l++) {
+    min = *(pt + l*m);
+    for(int k = 0; k < m; k++){
+        if(min > *(pt + k + l * m)) min = *(pt + k + l * m);
+        }
+     *(minPt + l) = min;
+    }
+
+    max = *(pt);
+    
+
+
+    for(int l = 0; l < n; l++) {
+        max = *(pt + l*m);
+        for(int k = 0; k < m; k++){
+            if(min > *(pt + k + l * m)) min = *(pt + k + l * m);
+            }
+        *(minPt + l) = min;
+    }
+
+
+
+
+//a[n1][n2] address of a[i][j] = p + i * n2 +j
+
+
+/* 3 3
+1,2,3
+4,5,6
+7,8,9
+
+ */
 
 // Find the saddle point. --- https://tinyurl.com/yhzs3b8l 
 
