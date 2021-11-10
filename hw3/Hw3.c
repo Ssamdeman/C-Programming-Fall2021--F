@@ -14,7 +14,7 @@ int main(void){
 
     int temp;
 
-    if ((n == 0) || (m == 0)){
+    if ((n = 0) || (m == 0)){
         return 0;
     }
     else{
