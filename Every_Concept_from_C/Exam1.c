@@ -12,7 +12,7 @@ int main (void){
     int eachCharacter; // this is from Stdn input where a character is uses ASCII code
     int i = 0;
     char tempholder [MAXLENGTH];
-    int p =0 ;
+    int p = 0 ;
 
    if ((eachCharacter = getchar()) == '\n') {
        printf("%c",eachCharacter);
