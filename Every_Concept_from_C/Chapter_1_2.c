@@ -18,7 +18,7 @@ int main (void){
     int k = 0;
     int countWords  = 0;
 
-
+    ///getting the input with size of 100.
     while( c != EOF){
         Array[k] = c; 
         k++;
@@ -38,7 +38,8 @@ int main (void){
     for(int i = 0; i < k; i++){
        if (Array2[i] != ' ') {
            printf ("%c",Array2[i]);
-       }else{printf (" ");}
+       }
+       printf (" ");
 
     }
     return 0;
