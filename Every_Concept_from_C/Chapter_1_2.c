@@ -27,9 +27,26 @@ int main (void){
 
 
 
+    ///getting the input with size of 100.
+    while( c != EOF){
+        Array[k] = c; 
+        k++;
+        c = getchar();
+    }
 
 
 
+    for(int i = 0; i < k; i++){
+        if (Array[i] != ' '){
+            Array2[i] = Array[i];
+            countWords++;
+        }
+    }
+    for(int i = 0; i < k; i++){
+       if (Array2[i] != ' ') {
+           printf ("%c",Array2[i]);
+       }
+       printf (" ");
 
 
 
