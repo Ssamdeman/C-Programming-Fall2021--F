@@ -8,13 +8,110 @@
     
 } */
 
+/* void stat(){
+    static int  y = 1; 
+    printf("%d ", y);
+} */
 int main (void){
+    //unsigned and singed.
+    unsigned int x;
+    x = -1;
+    printf("%d", x);
 
+   
+
+   return 0;
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                             // Stacki Variable.                            */
+/* -------------------------------------------------------------------------- 
+    // Static is vraible basically saves the vraible throught the program. 
+    int static x = 0;
+    x++;
+    x++;
+    printf("%d\n", x);
+    x = 0;
+    printf("%d\n", x);
+ 
+    stat();
+    stat();
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+ /* -------------------------------------------------------------------------- */
+    /*             /// professors's help for finding a speficic words.            
     //Goal is to get specific String
     int c;
     c = getchar();
     char Array[1000];
-    char Array2[1000];
+    char Array2[10000];
     int k = 0;
     int countWords  = 0;
 
@@ -34,56 +131,24 @@ int main (void){
             Array2[i] = Array[i];
             countWords++;
         }
+
+        if(Array[i] == ' '){
+            Array[i] = '|';
+        }
     }
+    
+    Array2[k] = '\0';
+    printf("%c",Array2[2] );
+/* 
     for(int i = 0; i < k; i++){
        if (Array2[i] != ' ') {
-           printf ("%c",Array2[i]);
-       }else{printf (" ");}
+           printf ("%c ",Array2[i]);
+       }
+       else{printf (" ");}
 
-    }
-    return 0;
-    
-    
-    
+    }*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /* -------------------------------------------------------------------------- */
 
 
 
