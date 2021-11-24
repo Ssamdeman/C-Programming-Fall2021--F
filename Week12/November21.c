@@ -28,6 +28,7 @@ NODE* newNode (int val){
     p->size =1;
     return p;
 }
+
 //NODE* addNode2Three(NODE* r, NODE* NEW){
 
 NODE* addNode2Three(NODE* r, int x){
@@ -38,7 +39,7 @@ NODE* addNode2Three(NODE* r, int x){
         return NEW;
         //tree empty
     }
-    if(r->value == x) return r //Noo needed to add;
+    if(r->value == x) return r; //Noo needed to add;
     if(r->value > x){
         //new must be the new root. 
         NEW->size = r->size;
@@ -72,12 +73,12 @@ void printThree(NODE* r){
 int main (void){
     NODE x;
     ///NODE_Pointer p;
-    NODE* root NULL;
+    NODE* root = NULL;
     int i;
     while((scanf("%d", &i)) != EOF){
         NODE* New_Node;
         New_Node = newNode(i);
-        root addNode2Three(root, New_Node);
+        root = addNode2Three(root, New_Node);
     }
 
     printThree(root);
