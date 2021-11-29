@@ -1,32 +1,39 @@
 #include<stdio.h>
 #include <stdlib.h>
-/// build basic link chain. 
+
+/// build basic link chain like reading from sdtin and priting them out. 
+
 struct NODE {
-    int values;
-    struct NODE* next;
+    char values; //character stored in  this node. 
+    struct NODE* next; // address pointeint to the next node in the list. 
     //struct NODE* prev;
 };
 
-struct NODE* AddNewNode(struct NODE* first, int input){
-    
-    struct NODE *new_node;
-    new_node = malloc(sizeof(struct NODE));\
-    new_node->values = input;
+
+struct NODE* addNewNode (struct NODE *first, char ch){
+    //add a new node called "new_node" to the list starting at adress "*first";
+    //return updated list after adding the new node;
+
+    struct NODE* new_node;
+    new_node = malloc(sizeof(struct NODE));
+    new_node->values = ch;
     new_node->next = NULL;
 
-    if (first == NULL){ 
+    //add new node in the *first.
+    if(first == NULL){
+        //the inpute is empty
         first = new_node;
-    }else{
+    }
+    else{
+        // we are moving through every elements in the *first and saving the last elements node and "last"
         struct NODE* last;
         last = first;
-        while (last->next != NULL){
-            last = last->next;
-        }
+        while(last->next == NULL) last = last->next;
+
         last->next = new_node;
         last = new_node;
     }
     return first;
-
 }
 
 
@@ -34,14 +41,15 @@ struct NODE* AddNewNode(struct NODE* first, int input){
 
 
 int main (void){
-    int  i; // for getting input from scan if;
-
-    struct NODE *unsorted = NULL; // NODE pointer that saves the the inpute and give as sorted;
-
-    while((scanf("%d", &i)) != EOF){
-        unsorted = AddNewNode(unsorted, i);
-    } 
-
-
+    int ch;
+    struct NODE *p = NULL; // pointing to the firwst node in the list
     
+    while(1) {
+        ch = getchar();
+        if (ch == EOF) break;
+        // ch is a character
+        // create a new node to store this character
+        // append this new node to the existing list
+        p = addNewNode(p, ch);
+    }
 }
