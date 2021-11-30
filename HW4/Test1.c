@@ -3,62 +3,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// use a linked list: list of nodes each storing the address of the next node
+
+
 struct NODE {
-    char character; // character stored in this node
-    struct NODE *next; // address pointing to the next node in the list
+    int data;
+    struct NODE *next;
 };
 
-void printList(struct NODE *first) {
-    // print information of linked list starting at the first node "first"
-    struct NODE *current;
-    current = first;
-    while(current != NULL) {
-        printf("%c", (*current).character);
-        current = (*current).next;
-    }
-}
-
-struct NODE* addNewNode(struct NODE *first, char ch) {
-    // add a new node "new" to the list starting at address "first"
-    // return the updated list
-    
-    struct NODE *new_node;
-    new_node = malloc(sizeof(struct NODE));
-    (*new_node).character = ch;
-    (*new_node).next = NULL;
-    
-    if (first == NULL) {
-        // list is empty
-        first = new_node;
+//sorting and saving in the headref
+void sorted (struct NODE** head_ref, struct NODE* new_node) {
+    struct NODE* current;
+    //Special case for the head end 
+    if (*head_ref == NULL|| ((*head_ref)->data >= new_node->data)) {
+        new_node->next = *head_ref;
+        *head_ref = new_node;
     }
     else {
-        struct NODE* last;
-        last = first;
-        while(1) {
-            if ((*last).next == NULL) break;
-            last = (*last).next;
+        current = *head_ref;
+        while ((current->next != NULL) && (current->next->data < new_node->data)) {
+            current = current->next;
         }
-        (*last).next = new_node;
-        last = new_node;
+        new_node->next = current->next;
+        current->next = new_node;
     }
-    return first;
 }
 
-int main() {
-    int ch;
-    struct NODE *p = NULL; // pointing to the firwst node in the list
-    
-    while(1) {
-        ch = getchar();
-        if (ch == EOF) break;
-        // ch is a character
-        // create a new node to store this character
-        // append this new node to the existing list
-        p = addNewNode(p, ch);
+
+void printLinkedList(struct NODE *first){
+    struct NODE* current;
+    current = first;
+    while(current != NULL){
+        printf("%d ", current->data);
+        current = current->next;
     }
-    printf("the string just read from stdin is: \n");
-    printList(p);
-    
+}
+
+
+
+
+struct NODE* AddNewNode(int input){
+
+    struct NODE *new_node;
+    new_node = (struct NODE*) malloc(sizeof(struct NODE));
+
+    new_node->data = input;
+    new_node->next = NULL;
+    return new_node;
+}
+/* struct NODE* addNewNode (struct NODE *first, int input){
+
+    struct NODE* new_node;
+    new_node = malloc(sizeof(struct NODE));
+    new_node->data = input;
+    new_node->next = NULL;
+
+    //if the *first is the empty 
+    if(first == NULL){
+        first = new_node;
+    }else {
+        struct NODE* last; /// *last will be last node for the *first
+        last = first;
+        while (last->next != NULL){
+            last = last->next;
+        }
+        last->next = new_node;
+        last = new_node;
+    } return first;
+
+}
+ */
+
+int main (void){
+    int x;
+    struct NODE *p = NULL;
+    struct NODE *head = NULL;
+
+    while((scanf("%d", &x)) != EOF) {
+        p = addNewNode(x);
+        sorted(&head, p);
+    }
+    printf("Here is the all input\n");
+    printLinkedList(head);
+
     return 0;
+
 }
