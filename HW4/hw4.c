@@ -2,98 +2,190 @@
 #include <stdlib.h>
 
 
+
 struct NODE {
-    char character;
-    struct NODE *next;
-    struct NODE *prev;
+    int character; // character stored in this node
+    struct NODE *next; // address pointing to the next node in the list
+    struct NODE *prev; 
 };
 
-void printlistlink (struct NODE * first){
-    
+
+
+
+void printList(struct NODE *first) {
+    // print information of linked list starting at the first node "first"
     struct NODE *current;
     current = first;
+    while(current != NULL) {
+        printf("%d ", (*current).character);
+        current = (*current).next;
+    }
+}
 
-    while(current != NULL){
-        printf("%c", current->character);
-        current = current->next;
-        }    
+struct NODE* reverse(struct NODE *head){
+
+        if( head == NULL) return head;
+
+        struct NODE*  w = head;
+        struct NODE*  q = w->next;
+
+        while ( w->next != NULL ){
+            
+            q = w->next;
+            w->prev = w->prev;
+            w->prev = q;
+            w = w->prev;
+        }
+        w->next = w->prev;
+        w->prev = NULL;
+        return w;
     }
 
-struct NODE* AddNewNode(struct NODE *first, char ch){
-    struct NODE* new_node;
+/* void ReversePrint(struct NODE *list) {
+	struct NODE* temp = list;
+	if(temp == NULL) return; // empty list, exit
+	// Going to last Node
+	while(temp->next != NULL) {
+		temp = temp->next;
+	}
+	while(temp != NULL) {
+		printf("%d ",temp->character);
+		temp = temp->prev;
+	}
+	printf("\n");
+} */
+
+
+struct NODE* AddNewNodeSorted(struct NODE *first, int ch){
+    struct NODE *ptr;
+	struct NODE *temp = (struct NODE *)malloc(sizeof(struct NODE));
+	temp->character = ch;
+	temp->next = NULL;
+	
+	if(first == NULL){
+		// this section runs if linked list is empty
+		// we simply set head to temp
+		first = temp;	
+	}
+	else if(temp->character <= first->character){
+		temp->next = first;
+		first = temp;
+	}
+	else{
+		ptr = first;
+		while(ptr->next!= NULL && ptr->next->character < temp->character){
+			ptr = ptr->next;
+		}
+		temp->next = ptr->next;
+		ptr->next = temp;
+	}
+	
+	return first;
+
+}
+
+
+struct NODE* addNewNode(struct NODE *first, int ch) {
+    // add a new node "new" to the list starting at address "first"
+    // return the updated list
+    
+
+    //this code works too but it breaks the reverse.
+    /* 
+    
+ */
+
+
+    struct NODE *new_node;
     new_node = malloc(sizeof(struct NODE));
     new_node->character = ch;
     new_node->next = NULL;
     new_node->prev = NULL;
+    
 
-    // check of First empty;
-    if(first == NULL) {
+     if (first == NULL) {
+        // list is empty
         first = new_node;
-    }//else fin the last node in the *first where *first = last;
-     else{
-         struct NODE* last;
-         last = first;
-         while(1){
-             if( last->next == NULL)break;
-             last = last->next;
-         }
-         last->next = new_node; /// we getting address of last.next into the newnode.
-         new_node->prev = last; // address into the 
-         last = new_node; 
     }
-    return first; 
+    else {
+        struct NODE* last;
+        last = first;
+        while(1) {
+            if (last->next == NULL) break;
+            last = last->next;
+        }
+        last->next = new_node;
+        new_node->prev = last;
+        last = new_node;
+    }
+    return first;
 }
 
-//make double linked list.
-int main (void){
-    int ch;
 
-    struct NODE *p = NULL;
+int main() {
+    //size of the y;
+    int y, x, z;
 
-    while(1){
-        ch = getchar();
-        if(ch == EOF) break;
-        p = AddNewNode(p, ch);
+    scanf ("%d ", &y);
+    struct NODE *p = NULL; //reversiable
+    struct NODE *p_two = NULL; //sorted but none reversiable. 
+    struct NODE *p_three = NULL;
+
+    for (int i = 0; i < y; i++){
+        scanf("%d", &x);
+        p = addNewNode(p, x);
+        p_two = AddNewNodeSorted(p_two, x);
     }
-    printf("Here are the inputes\n");
-    printlistlink (p);
+    scanf ("%d", &z);
 
-} 
+    printf("the string just read from stdin is: \n");
 
-/* int main (void){
-    int x;
-    struct NODE *linkedList = NULL;
+    p_two = AddNewNodeSorted(p_two, z);
+    printList(p_two);
+    printf("\n");
+    p = reverse(p_two);
+    printList(p);
 
-    while((scanf("%d", &x)) != EOF){
-        linkedList = AddNewNode(linkedList, x);
-    }
-    ordered(linkedList);
-    reverseOrdered(linkedList)
-} */
-
+    //ReversePrint(p);
+    
+    return 0;
+}
+//1 3 5 7 9
 
 
 /// sorted thing lin
-/* void sortedInsert(struct Node** head_ref,
-                  struct Node* new_node)
-{
-    struct Node* current;
-    Special case for the head end 
-    if (*head_ref == NULL
-        || (*head_ref)->data
-               >= new_node->data) {
-        new_node->next = *head_ref;
-        *head_ref = new_node;
-    }
-    else {
-         Locate the node before 
-the point of insertion 
-        current = *head_ref;
-        while (current->next != NULL
-               && current->next->data < new_node->data) {
-            current = current->next;
-        }
-        new_node->next = current->next;
-        current->next = new_node;
-    }
-} */
+/* 
+struct node* insert_sortedll(node *head, int val){
+	
+	struct node *ptr;
+	struct node *temp = (struct node *)malloc(sizeof(struct node));
+	temp->val = val;
+	temp->next = NULL;
+	
+	if(head==NULL){
+		// this section runs if linked list is empty
+		// we simply set head to temp
+		head = temp;	
+	}
+	else if(temp->val <= head->val){
+		// this section runs if the new val is smaller then
+		// the first value in the linked list
+		// we simple insert temp at the beginning of the linked list
+		temp->next = head;
+		head = temp;
+	}
+	else{
+		// we are iterating each element of the linked list
+		// to find the node whose value is just smaller than val
+		ptr = head;
+		while(ptr->next!=NULL&&ptr->next->val<temp->val){
+			ptr = ptr->next;
+		}
+		// ptr now points to the node whose value is just less than val
+		// we simply insert temp between ptr and ptr->next
+		temp->next = ptr->next;
+		ptr->next = temp;
+	}
+	
+	return head;
+ */
