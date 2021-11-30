@@ -22,7 +22,7 @@ void printList(struct NODE *first) {
     }
 }
 
-struct NODE* reverse(struct NODE *head){
+/* struct NODE* reverse(struct NODE *head){
 
         if( head == NULL) return head;
 
@@ -39,9 +39,9 @@ struct NODE* reverse(struct NODE *head){
         w->next = w->prev;
         w->prev = NULL;
         return w;
-    }
+    } */
 
-/* void ReversePrint(struct NODE *list) {
+void ReversePrint(struct NODE *list) {
 	struct NODE* temp = list;
 	if(temp == NULL) return; // empty list, exit
 	// Going to last Node
@@ -53,7 +53,7 @@ struct NODE* reverse(struct NODE *head){
 		temp = temp->prev;
 	}
 	printf("\n");
-} */
+} 
 
 
 struct NODE* AddNewNodeSorted(struct NODE *first, int ch){
@@ -61,6 +61,7 @@ struct NODE* AddNewNodeSorted(struct NODE *first, int ch){
 	struct NODE *temp = (struct NODE *)malloc(sizeof(struct NODE));
 	temp->character = ch;
 	temp->next = NULL;
+    temp->prev = NULL;
 	
 	if(first == NULL){
 		// this section runs if linked list is empty
@@ -73,10 +74,11 @@ struct NODE* AddNewNodeSorted(struct NODE *first, int ch){
 	}
 	else{
 		ptr = first;
-		while(ptr->next!= NULL && ptr->next->character < temp->character){
+		while(ptr->next != NULL && ptr->next->character < temp->character){
 			ptr = ptr->next;
 		}
 		temp->next = ptr->next;
+        //temp->prev = ptr;
 		ptr->next = temp;
 	}
 	
@@ -141,12 +143,9 @@ int main() {
     printf("the string just read from stdin is: \n");
 
     p_two = AddNewNodeSorted(p_two, z);
-    printList(p_two);
-    printf("\n");
-    p = reverse(p_two);
     printList(p);
-
-    //ReversePrint(p);
+    printf("\n");
+    ReversePrint(p_two);
     
     return 0;
 }
