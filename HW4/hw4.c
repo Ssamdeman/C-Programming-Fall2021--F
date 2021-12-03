@@ -90,13 +90,9 @@ struct NODE* AddNewNodeSorted(struct NODE *first, int ch){
 struct NODE* addNewNode(struct NODE *first, int ch) {
     // add a new node "new" to the list starting at address "first"
     // return the updated list
-    
-
     //this code works too but it breaks the reverse.
     /* 
-    
  */
-
 
     struct NODE *new_node;
     new_node = malloc(sizeof(struct NODE));
