@@ -15,10 +15,20 @@ int main (void){
     }
     array1[k] = '\0';
 
+    //get the last element.
+    //printf("\n%c\n",array1[k-1]);
 
-    for ( int i = 0; i < k; i++){
+    
+    //if(array1[k-1]) > 'a' && array1[k-1]
+    
+
+
+
+
+//testing the inputes;
+/*     for ( int i = 0; i < k; i++){
         printf("%c", array1[i] );
-    }
+    } */
 
 
 
