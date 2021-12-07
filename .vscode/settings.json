@@ -20,7 +20,8 @@
         "unordered_map": "c",
         "vector": "c",
         "chrono": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "iosfwd": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

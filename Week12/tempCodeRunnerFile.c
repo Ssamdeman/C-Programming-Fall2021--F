@@ -1,1 +1,1 @@
-    while((scanf("%d", &i)) != EOF){
+num_vertices
