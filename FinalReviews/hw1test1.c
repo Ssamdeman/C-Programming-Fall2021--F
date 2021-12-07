@@ -1,6 +1,7 @@
 #include<stdio.h>
 #define MAXLENGTH 1000
-
+//12-07-2021 11:04:11 Classes note: Focus on the Test3 and Test 2. 
+// play with linked list a lot. Like a lote. taking and remover node
 int main (void){
 
     int array1 [MAXLENGTH]; // array to save
