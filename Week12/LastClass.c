@@ -12,6 +12,7 @@ struct GRAPHNODE {
     char* name; // store the name of the node (person)
     int age;
     struct LISTNODE* neighbors;
+    struct GRAPHNODE* next;
 };
 
 
@@ -29,6 +30,7 @@ struct GRAPHNODE newGraphNode(char* _name, int _age) {
     strcpy(vertex.name, _name);
     vertex.age = _age;
     vertex.neighbors =NULL;
+    vertex.next = NULL;
     
     return vertex;
 }
@@ -43,12 +45,13 @@ struct LISTNODE* addNeighbor(struct LISTNODE* neighbor_first, struct GRAPHNODE n
     return new_list_node_p;
 }
 
+
 void printVertex(struct GRAPHNODE vertex) {
     // print name and age of this vertex
     printf("name: %s, age: %d", vertex.name, vertex.age);
 }
-
-void printGraph(struct GRAPHNODE *g, int n_vertices) {
+//wrong one
+/* void printGraph(struct GRAPHNODE *g, int n_vertices) {
     // print  the inforamtion for every vertex in a given graph
     // g: address of the array of vertices
     // n_vertices: num of vertices in this graph
@@ -68,9 +71,9 @@ void printGraph(struct GRAPHNODE *g, int n_vertices) {
         
     }
     
-}
+} */
 
-struct GRAPHNODE* addVertex(struct GRAPHNODE *first_vertex_ptr, char* _name, int _age ) {
+/* struct GRAPHNODE* addVertex(struct GRAPHNODE *first_vertex_ptr, char* _name, int _age ) {
     // adding a new vetex with _name and _age
     // to a given graph
     // first_vertex_prt is pointer to first vertex of graph
@@ -82,25 +85,63 @@ struct GRAPHNODE* addVertex(struct GRAPHNODE *first_vertex_ptr, char* _name, int
     new_vertex_p->age = _age;
     new_vertex_p->next = first_vertex_ptr;
     return new_vertex_p;
+} */
+
+void addVertexToGraph(struct GRAPHNODE** address_of_my_graph, struct GRAPHNODE node_v){
+    //arguments  that given the lette's adress;
+    struct GRAPHNODE*  my_graph;
+    my_graph = *address_of_my_graph;
+
+    struct GRAPHNODE* new_vertex_pointer;
+    new_vertex_pointer = malloc(sizeof(struct GRAPHNODE));
+    *new_vertex_pointer = node_v;// there are other things can be made..
+
+    new_vertex_pointer->next = my_graph;
+    //new vertex now. 
+    *address_of_my_graph = new_vertex_pointer;
 }
 
-int main() {
-    struct GRAPHNODE *graph = NULL; // linked list of vertices
-    
-    graph = addVertex(graph, "John", 20);
-    graph = addVertex(graph, "Jane", 18);
-    graph = addVertex(graph, "Joe", 21);
-    graph = addVertex(graph, "Jenny", 25);
-    
-    addNeighbor(
+void printGraph(struct GRAPHNODE* first_pointer_vertex){
+    while(first_pointer_vertex != NULL){
+        printVertex(*first_pointer_vertex);
+        ///print neighboor
+        struct LISTNODE* my_neighboor = first_pointer_vertex->neighbors;
+        while(my_neighboor != NULL){
+            printVertex(my_neighboor->vertex);
+            my_neighboor = my_neighboor->next;
+        }
+        first_pointer_vertex = first_pointer_vertex->next;
+    }
 }
-/*
-// option 1:
+
+void addNeighboorTo(struct GRAPHNODE** vertext_p, struct GRAPHNODE* vertex_friend_p){
+    struct GRAPHNODE* my_vertex = *vertext_p;
+    addNeighboor(my_vertex->neighbors, *vertex_friend_p);
+    *vertext_p = my_vertex;
+
+}
 int main() {
+    struct GRAPHNODE *graph_first_p = NULL; // linked list of vertices
+    struct GRAPHNODE vertex =  newGraphNode("John", 20);
+    addVertexToGraph(&graph_first_p, vertex);
+    printGraph(graph_first_p);
+
+    /* 
+    graph_first_p = (struct GRAPHNODE *) malloc (sizeof (struct GRAPHNODE));
+
+    graph_first_p = addVertex(graph, "John", 20);
+    graph_first_p = addVertex(graph, "Jane", 18);
+    graph_first_p = addVertex(graph, "Joe", 21);
+    graph_first_p = addVertex(graph, "Jenny", 25);
+     */
+    
+}
+
+// option 1:
+/* int main() {
     struct GRAPHNODE graph[100];
     
     graph[0] = newGraphNode("John", 20);
-    
     graph[1] = newGraphNode("Jane", 18);
     graph[2] = newGraphNode("Joe", 21);
     graph[3] = newGraphNode("Jenny", 25);
@@ -124,4 +165,4 @@ int main() {
     printf("\n");
     return 0;
 }
-*/
+ */
