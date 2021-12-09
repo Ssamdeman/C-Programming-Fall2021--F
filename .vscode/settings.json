@@ -21,7 +21,8 @@
         "vector": "c",
         "chrono": "c",
         "sstream": "c",
-        "iosfwd": "c"
+        "iosfwd": "c",
+        "__locale": "c"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    //"C_Cpp.errorSquiggles": "Disabled"
 }
