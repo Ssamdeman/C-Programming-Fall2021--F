@@ -14,7 +14,8 @@ struct TREENODE{
 struct TREENODE* Insert(struct TREENODE* root, char* word){
     struct TREENODE* find_where_put_p;
     find_where_put_p  = root; //pointer to compare and move around the tree;
-    //geeting the word in corrent time type;
+
+    //geeting the word in corrent type or node.
     struct TREENODE* in_coming_word;
     in_coming_word = (struct TREENODE*)malloc(sizeof(struct TREENODE));
     in_coming_word->word = malloc(strlen(word)+1);
@@ -23,22 +24,24 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
     in_coming_word->left = NULL;
 
     //comparing and inserting the word.
-
     if(find_where_put_p == NULL){
         root = in_coming_word;
     }else{
         while(1){
             //comparing the value;
             int new_word_compared = strcmp(find_where_put_p->word, in_coming_word->word);
-            //if the in_coming_word->word < find_where_put_p
+            //Finding where to put the new value using the find_where_put_p. 
             if(new_word_compared > 0){
+               
                 if(find_where_put_p->left == NULL){
                     break;
                 }else{
                     find_where_put_p = find_where_put_p->left;
+                    /// We need to check again if the new find_where_put_p is has children.
                 }
             } 
-            if (find_where_put_p < 0 ){
+            else if (find_where_put_p < 0 ){
+                // need to enter a new while since we need to check all the children of the left area.?
                 if(find_where_put_p->right == NULL){
                     break;
                 }else{
@@ -79,7 +82,7 @@ int main (void){
 
     char a_word[29];
     int ch;
-    int i = 0 ;
+    int i = 0;
     struct TREENODE* root;
     root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
 
