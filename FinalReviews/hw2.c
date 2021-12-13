@@ -30,7 +30,10 @@ int main(void){
         if(value_holder == '\n') break;
         array_a[k] = value_holder;
         k++;
+        //if (k > n) break;
         value_holder = getchar();
+        
+
     }
     array_a[k] = '\0';
     
@@ -46,7 +49,9 @@ int main(void){
         if (value_holder == '\n') break;
         array_b[j] = value_holder;
         j++;
+        //if (j > m) break;
         value_holder = getchar();
+
     }  
     array_b[j] = '\0';
     /* testing the inputs if Array_A. 
@@ -54,6 +59,13 @@ int main(void){
         printf("%c\n", array_b[i]);
     }
  */
+    //p is a pointer. Use it.
+    for(int i = 0; i < k+j;i++){
+        p = array_c;
+        p[i] = array_a[i];
+
+
+    }
 
 
 
