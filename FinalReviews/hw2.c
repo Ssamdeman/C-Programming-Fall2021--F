@@ -37,12 +37,12 @@ int main(void){
         if( k >= n) break;
     }
 
-  /*  //testing the array_a; -- 12-17-2021 12:28:18 working well.
+   //testing the array_a; -- 12-17-2021 12:28:18 working well.
      printf("here is the inputes of the array_a\n");
     for(int i = 0; i < k; i++){
-        printf("%d,", array_a[i]);
+        printf("%d,\n", array_a[i]);
     }
- */
+
     while(1){
         //printf("i am here\n");
         scanf("%d,", p);
@@ -51,7 +51,6 @@ int main(void){
         if( j >= m) break;
 
     } 
-
     printf("here is the inputes of the array_b\n");
     for(int i = 0; i < j; i++){
         printf("%d,", array_b[i]);
