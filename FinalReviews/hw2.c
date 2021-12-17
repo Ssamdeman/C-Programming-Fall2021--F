@@ -30,27 +30,30 @@ int main(void){
     } */
 
     //goal is to read user in inpute using the scanif an save in arrats;
-    while(k != n){
+    while(1){
         scanf("%d,", p);
         array_a[k] = *p;
         k++;
+        if( k >= n) break;
     }
-    
-/*     //testing the array_a;
+
+  /*  //testing the array_a; -- 12-17-2021 12:28:18 working well.
      printf("here is the inputes of the array_a\n");
     for(int i = 0; i < k; i++){
         printf("%d,", array_a[i]);
     }
  */
-
-    while(j != m){
+    while(1){
+        //printf("i am here\n");
         scanf("%d,", p);
         array_b[j] = *p;
         j++;
+        if( j >= m) break;
+
     } 
 
     printf("here is the inputes of the array_b\n");
-    for(int i = 0; i < k; i++){
+    for(int i = 0; i < j; i++){
         printf("%d,", array_b[i]);
     }
     
