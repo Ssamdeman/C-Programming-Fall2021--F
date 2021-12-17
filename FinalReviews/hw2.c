@@ -94,7 +94,6 @@ int main(void){
         array_c[tempholder] = array_b[i]; 
         tempholder++;
     }
-
     //priting c;
     for(int i = 0; i < tempholder; i++){
         printf("%d,", array_c[i]);
