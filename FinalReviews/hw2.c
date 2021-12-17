@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #define MAXVALUE 1000
 
@@ -7,7 +8,7 @@ int main(void){
     //get the size of the arrays in the first line. 
     int n;
     int m;
-    char* p;
+    int* p;//
 
    //printf("Code is Working\n");
     scanf("%d %d\n", &n, &m);
@@ -15,15 +16,114 @@ int main(void){
     if( n < 0 || m < 0) return 0;
     //printf("%d %d", n, m);
 
-    char array_a[n];// arrays must be char and not int. That is why the problem is here.
-    char array_b[m];
-    char array_c[n+m];
+    int array_a[n];
+    int array_b[m];
+    int array_c[n+m];
 
-    char value_holder;
+    int value_holder;
     int k = 0;// counter for Array_a;
     int j = 0; // counter for Array_b; 
 
+   /*  printf("here is the inputes of the array_b\n");
+    for(int i = 0; i < k; i++){
+        printf("%d,", array_b[i]);
+    } */
 
+    //goal is to read user in inpute using the scanif an save in arrats;
+    while(k != n){
+        scanf("%d,", p);
+        array_a[k] = *p;
+        k++;
+    }
+    
+/*     //testing the array_a;
+     printf("here is the inputes of the array_a\n");
+    for(int i = 0; i < k; i++){
+        printf("%d,", array_a[i]);
+    }
+ */
+
+    while(j != m){
+        scanf("%d,", p);
+        array_b[j] = *p;
+        j++;
+    } 
+
+    printf("here is the inputes of the array_b\n");
+    for(int i = 0; i < k; i++){
+        printf("%d,", array_b[i]);
+    }
+    
+    
+
+
+
+
+
+
+/* 
+    2 3 
+    1,3
+    2,4,6 
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+12-17-2021 10:28:38 wrong method to use. 
     //reading the first line. ---Don
     value_holder = getchar();
     while(value_holder != EOF){
@@ -62,21 +162,17 @@ int main(void){
 
     printf("here is the out of Array C\n");
     //p is a pointer. Use it.
-    for(int i = 0; i < k+j;i++){
+    for(int i = 0; i < k;i++){
         p = array_c;
         p[i] = array_a[i];
         printf("%c", *(p+i));
-
     }
+     */
 
 
 
 
-/* 
-    2 3 
-    1,3
-    2,4,6 
-    */
+
 
 
 
