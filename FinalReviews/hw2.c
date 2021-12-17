@@ -45,7 +45,7 @@ int main(void){
     //goal is to read user in inpute using the scanif an save in arrats;
     while(1){
         if(n == 0) break;
-        scanf("%d,", p);
+        scanf("%d, ", p);
         array_a[k] = *p;
         k++;
         if( k >= n) break;
@@ -72,8 +72,8 @@ int main(void){
     }
      */
     //sort the array_a  and array_b; ---12-17-2021 13:12:32 WAE.
-    sorted(array_a, k);
-    sorted(array_b, j);
+    sorted(array_a, n);
+    sorted(array_b, m);
    /*  // inputs are working as expeted.
      printf("here is the sorted of the array_a\n");
     for(int i = 0; i < k; i++){
@@ -84,6 +84,8 @@ int main(void){
         printf("%d ", array_b[i]);
     }
  */
+
+
     // merget two arrays intop one;
     for(int i = 0; i < k;i++){
         array_c[i] = array_a[i]; 
@@ -98,6 +100,7 @@ int main(void){
     for(int i = 0; i < tempholder; i++){
         printf("%d,", array_c[i]);
     }
+    //removing the last , thing int he end. the   
 
 
 
