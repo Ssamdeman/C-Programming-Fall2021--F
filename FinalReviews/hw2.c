@@ -97,7 +97,7 @@ int main(void){
         tempholder++;
     }
     //priting c;
-    for(int i = 0; i < tempholder; i++){
+    for(int i = 0; i < tempholder - 1; i++){
         printf("%d,", array_c[i]);
     }
     //removing the last , thing int he end. the   
