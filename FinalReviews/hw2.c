@@ -7,7 +7,7 @@ int main(void){
     //get the size of the arrays in the first line. 
     int n;
     int m;
-    int* p;
+    char* p;
 
    //printf("Code is Working\n");
     scanf("%d %d\n", &n, &m);
@@ -36,11 +36,11 @@ int main(void){
 
     }
     array_a[k] = '\0';
-    
+    printf("here is the input of ARRAy A\n");
     //testing the inputs if Array_A. 
-    /* for(int i = 0; i < k; i++){
+    for(int i = 0; i < k; i++){
         printf("%c\n", array_a[i]);
-    } */
+    }
 
 
     //Reading the second Line. 
@@ -52,20 +52,23 @@ int main(void){
         //if (j > m) break;
         value_holder = getchar();
 
-    }  
+    }
     array_b[j] = '\0';
-    /* testing the inputs if Array_A. 
+    //testing the inputs if Array_A. 
+    printf("here is the input of Array B\n");
     for(int i = 0; i < j; i++){
         printf("%c\n", array_b[i]);
     }
- */
+
+    printf("here is the out of Array C\n");
     //p is a pointer. Use it.
     for(int i = 0; i < k+j;i++){
         p = array_c;
         p[i] = array_a[i];
-
+        printf("%c", *(p+i));
 
     }
+
 
 
 
