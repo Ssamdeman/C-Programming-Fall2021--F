@@ -3,6 +3,19 @@
 
 #define MAXVALUE 1000
 
+void sorted(int array[], int size){
+    int i,j, temp;
+
+    for(i = 0; i < size; i++){
+        for( j = i+1; j < size;j++){
+            if( array[i] > array[j]){
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+}
 
 int main(void){
     //get the size of the arrays in the first line. 
@@ -20,7 +33,7 @@ int main(void){
     int array_b[m];
     int array_c[n+m];
 
-    int value_holder;
+    int tempholder;
     int k = 0;// counter for Array_a;
     int j = 0; // counter for Array_b; 
 
@@ -31,32 +44,62 @@ int main(void){
 
     //goal is to read user in inpute using the scanif an save in arrats;
     while(1){
+        if(n == 0) break;
         scanf("%d,", p);
         array_a[k] = *p;
         k++;
         if( k >= n) break;
     }
 
-   //testing the array_a; -- 12-17-2021 12:28:18 working well.
+ /*   //testing the array_a; -- 12-17-2021 12:28:18 working well.
      printf("here is the inputes of the array_a\n");
     for(int i = 0; i < k; i++){
         printf("%d,\n", array_a[i]);
-    }
+    } */
 
     while(1){
-        //printf("i am here\n");
+        if(m == 0) break;
         scanf("%d,", p);
         array_b[j] = *p;
         j++;
         if( j >= m) break;
 
     } 
+  /*  //testing the array_a; -- 12-17-2021 12:28:18 working well.
     printf("here is the inputes of the array_b\n");
     for(int i = 0; i < j; i++){
         printf("%d,", array_b[i]);
     }
-    
-    
+     */
+    //sort the array_a  and array_b; ---12-17-2021 13:12:32 WAE.
+    sorted(array_a, k);
+    sorted(array_b, j);
+   /*  // inputs are working as expeted.
+     printf("here is the sorted of the array_a\n");
+    for(int i = 0; i < k; i++){
+        printf("%d ", array_a[i]);
+    }
+    printf("\nhere is the sorted of the array_b\n");
+    for(int i = 0; i < j; i++){
+        printf("%d ", array_b[i]);
+    }
+ */
+    // merget two arrays intop one;
+    for(int i = 0; i < k;i++){
+        array_c[i] = array_a[i]; 
+    }
+    tempholder = k; // is value to conute the array_c;
+
+    for(int i = 0; i < j; i++){
+        array_c[tempholder] = array_b[i]; 
+        tempholder++;
+    }
+
+    //priting c;
+    for(int i = 0; i < tempholder; i++){
+        printf("%d,", array_c[i]);
+    }
+
 
 
 
