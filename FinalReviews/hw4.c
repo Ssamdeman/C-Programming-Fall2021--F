@@ -7,26 +7,38 @@ struct LINKED{
     struct LINKED *next;
 } ;
 
-
+//My logic was right but still cannot add it infront.
 struct LINKED* add_in_front(struct LINKED* linklist, int x){
+    struct LINKED* new_node;
+    new_node = malloc (sizeof(struct LINKED));
+    new_node->value = x;
+    new_node->next = NULL;
 
     struct LINKED *p; // pointer for original linked list
     struct LINKED * p2;
+
     p = linklist;
 
     if(linklist == NULL) {
-        return linklist;
-    }else{
-        while(1){
-            if(p->next == NULL){
-                break;
-
-            }
-        }
+        linklist =  new_node;
     }
+    else{
+        new_node->next = p;
+        linklist = new_node;
+
+    }
+    return linklist;
     
 
+/* 
 
+        1 2 3 4 5 6 = original
+        9 = adding in front
+        9 1 2 3 4 5 6;
+
+
+
+ */
 
 }
 
@@ -131,6 +143,7 @@ int main (void){
     head = addNewNode(head, 3);
     head = addNewNode(head, 4);
     head = addNewNode(head, 5);
+    
 
    /* 
     head = addNewNode(head, 'h');
@@ -140,5 +153,9 @@ int main (void){
     head = addNewNode(head, 'o'); 
  */
     print_list(head);
+    add_in_front(head, 9);
+    print_list(head);
+
+
 
 }
