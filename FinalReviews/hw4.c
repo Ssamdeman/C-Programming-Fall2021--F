@@ -3,11 +3,60 @@
 
 // creat linked list next.
 struct LINKED{
-    char value;
+    int value;
     struct LINKED *next;
 } ;
 
-struct LINKED* addNewNode(struct LINKED *first, char ch) {
+
+struct LINKED* add_in_front(struct LINKED* linklist, int x){
+
+    struct LINKED *p; // pointer for original linked list
+    struct LINKED * p2;
+    p = linklist;
+
+    if(linklist == NULL) {
+        return linklist;
+    }else{
+        while(1){
+            if(p->next == NULL){
+                break;
+
+            }
+        }
+    }
+    
+
+
+
+}
+
+
+//need attention
+struct LINKED* removeLast_element(struct LINKED* linkList){
+    //remove the last elemnt the return updated version.
+    struct LINKED*  t; //this find the last position.  
+    t = linkList;
+
+    if(linkList == NULL){ 
+        return linkList;
+    } 
+    else {
+        //https://www.alphacodingskills.com/ds/notes/linked-list-delete-the-last-node.php 
+        while(t->next != NULL){
+            t = t->next;
+            /// t become the last element. 
+            }
+        
+
+    }
+
+    return linkList;
+
+
+
+
+}
+struct LINKED* addNewNode(struct LINKED *first, int ch) {
     // add a new node "new" to the list starting at address "first"
     // return the updated list
     
@@ -39,7 +88,6 @@ struct LINKED* addNewNode(struct LINKED *first, char ch) {
 
     struct LINKED* new_node;
     new_node =  malloc(sizeof(struct LINKED));
-
     new_node->value = ch;
     new_node->next = NULL;
 
@@ -67,8 +115,9 @@ void print_list(struct LINKED* list){
     current = list;
 
     while(current != NULL){
-        printf("%c ", current->value);
+        printf("%d", current->value);
         current = current->next;
+        if(current == NULL) printf("\n");
     }
 }
 int main (void){
@@ -76,26 +125,20 @@ int main (void){
 
     struct LINKED *head = NULL;
 
-    //user inpute
-    int  x; 
-    
-    /* while(1) {
-        x = getchar();
-        if (x == EOF) break;
-       
-    } */
-    /* head = addNewNode(head, 1);
+   
+    head = addNewNode(head, 1);
     head = addNewNode(head, 2);
     head = addNewNode(head, 3);
     head = addNewNode(head, 4);
     head = addNewNode(head, 5);
- */
+
+   /* 
     head = addNewNode(head, 'h');
     head = addNewNode(head, 'e');
     head = addNewNode(head, 'l');
     head = addNewNode(head, 'l');
     head = addNewNode(head, 'o'); 
-
+ */
     print_list(head);
 
 }
