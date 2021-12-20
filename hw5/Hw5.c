@@ -6,12 +6,13 @@
 
 struct TREENODE{
     char* word;
-    int position;
+    int position; // aka parent.
     struct TREENODE* right;
     struct TREENODE* left;
 };
 
 struct TREENODE* Insert(struct TREENODE* root, char* word){
+    
     struct TREENODE* find_where_put_p;
     find_where_put_p  = root; //pointer to compare and move around the tree;
 
@@ -32,7 +33,6 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
             int new_word_compared = strcmp(find_where_put_p->word, in_coming_word->word);
             //Finding where to put the new value using the find_where_put_p. 
             if(new_word_compared > 0){
-               
                 if(find_where_put_p->left == NULL){
                     break;
                 }else{
@@ -52,6 +52,7 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
                 break;
             }   
         }
+
         int new_word_compared_two = strcmp(find_where_put_p->word, in_coming_word->word);
 
         if(new_word_compared_two < 0  ){
