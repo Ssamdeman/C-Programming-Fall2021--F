@@ -11,6 +11,21 @@ struct TREENODE{
     struct TREENODE* left;
 };
 
+//printing is working well.
+void print_tree_Inorder(struct TREENODE* tree){
+    //printf("I am here");
+    if( tree == NULL){
+        return;
+    }else{
+            print_tree_Inorder(tree->left);
+            printf("%s ", tree->word);
+            print_tree_Inorder(tree->right);
+    }
+
+}
+
+//comparison is working. but not all the tree is listing. 
+
 struct TREENODE* Insert(struct TREENODE* root, char* word){
     
     struct TREENODE* find_where_put_p;
@@ -25,9 +40,10 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
     in_coming_word->left = NULL;
 
     //comparing and inserting the word.
-    if(find_where_put_p == NULL){
+    if(root == NULL){
         root = in_coming_word;
     }else{
+        //this while loop is working.
         while(1){
             //comparing the value;
             int new_word_compared = strcmp(find_where_put_p->word, in_coming_word->word);
@@ -62,6 +78,8 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
             find_where_put_p->left = in_coming_word;
         }
     }
+    
+   // printf("I am here");
     return root;
 }
 
@@ -84,22 +102,31 @@ int main (void){
     char a_word[29];
     int ch;
     int i = 0;
-    struct TREENODE* root;
-    root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
+    struct TREENODE* root = NULL;
+    //root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
 
-    while(1){
+    /* while(1){
         ch = getchar();
         if(ch == '\n') break;
         if(ch == ' '){
             a_word[i] = '\0';
-            Insert(root, a_word);
+            root = Insert(root, a_word);
             i = 0;
         }else{
             a_word[i] = ch;
             i++;
         }
-
-    }
+    } */
+    //Insert()
+    root = Insert(root, "hello");
+    root = Insert(root, "1235");
+    root = Insert(root, "world");
+    root = Insert(root, "here");
+    root = Insert(root, "shit");
+    root = Insert(root, "show");
+    root = Insert(root, "show");
+    root = Insert(root, "show");
+    print_tree_Inorder(root);
 
 
 
