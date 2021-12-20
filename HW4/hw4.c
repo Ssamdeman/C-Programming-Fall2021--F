@@ -32,6 +32,120 @@ void printList(struct NODE *first) {
     }
 }
 
+
+
+struct NODE* addNewNode(struct NODE *first, int ch) {
+    // add a new node "new" to the list starting at address "first"
+    // return the updated list
+    
+    //this code works too but it breaks the reverse.
+
+
+    struct NODE *new_node;
+    new_node = malloc(sizeof(struct NODE));
+    new_node->character = ch;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    
+
+     if (first == NULL) {
+        // list is empty
+        first = new_node;
+    }
+    else {
+        struct NODE* last;
+        last = first;
+        while(1) {
+            if (last->next == NULL) break;
+            last = last->next;
+        }
+        last->next = new_node;
+        new_node->prev = last;
+        //last = new_node;
+    }
+    return first;
+}
+
+struct NODE* add_newnode_in_order(struct NODE* the_list, int x){
+    //creating a new node
+    struct NODE* new_node;
+    new_node = malloc(sizeof(struct NODE));
+    new_node->character = x;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+
+    //another pointers so I can keep track the front and previous
+    struct NODE* p1_front;
+    struct NODE* p2_back;
+    struct NODE* temp;
+
+    p1_front = the_list;
+
+   if (the_list == NULL) {
+        // list is empty
+        the_list = new_node;
+    }else{
+        //looping until the end of the node;
+        while(p1_front != NULL){
+            // if the first node is equal to the x value;
+            if(p1_front->character == new_node->character){
+                p1_front = p1_front->next;
+                // if x equal one of node then we go next node again
+            }else if(p1_front->character < new_node->character){
+                if(p1_front->next->character < new_node->character){
+                    temp = p1_front->next;
+                    new_node->next = temp;
+                    new_node->prev = p1_front;
+                }
+               
+
+            }else{
+               
+            }
+            p1_front = p1_front->next;// moving the next node.
+        }
+    }
+
+    return the_list;
+
+
+
+}
+
+
+int main() {
+    //size of the y;
+    int y, x, z;
+
+    scanf ("%d ", &y);
+    struct NODE *p = NULL; //reversiable
+    //struct NODE *p_two = NULL; //sorted but none reversiable. 
+    //struct NODE *p_three = NULL;
+
+    for (int i = 0; i < y; i++){
+        scanf("%d", &x);
+        //p = addNewNode(p, x);
+        //p_two = AddNewNodeSorted(p_two, x);
+        p = addNewNode(p, x);
+    }
+    scanf ("%d", &z);
+    p = addNewNode(p, z);
+
+    //printf("Priting linked List BEFORE reverse it.\n");
+    printList(p);
+    
+    return 0;
+}
+
+
+//1 3 5 7 9
+
+/* -------------------------------------------------------------------------- */
+/*                    two things that I tried but i failed                    */
+/* -------------------------------------------------------------------------- */
+
+
+
 /* struct NODE* reverse(struct NODE *head){
 
         if( head == NULL) return head;
@@ -118,64 +232,9 @@ void printList(struct NODE *first) {
 } */
 
 
-struct NODE* addNewNode(struct NODE *first, int ch) {
-    // add a new node "new" to the list starting at address "first"
-    // return the updated list
-    
-
-    //this code works too but it breaks the reverse.
 
 
-    struct NODE *new_node;
-    new_node = malloc(sizeof(struct NODE));
-    new_node->character = ch;
-    new_node->next = NULL;
-    new_node->prev = NULL;
-    
 
-     if (first == NULL) {
-        // list is empty
-        first = new_node;
-    }
-    else {
-        struct NODE* last;
-        last = first;
-        while(1) {
-            if (last->next == NULL) break;
-            last = last->next;
-        }
-        last->next = new_node;
-        new_node->prev = last;
-        //last = new_node;
-    }
-    return first;
-}
-
-
-int main() {
-    //size of the y;
-    int y, x, z;
-
-    scanf ("%d ", &y);
-    struct NODE *p = NULL; //reversiable
-    //struct NODE *p_two = NULL; //sorted but none reversiable. 
-    //struct NODE *p_three = NULL;
-
-    for (int i = 0; i < y; i++){
-        scanf("%d", &x);
-        //p = addNewNode(p, x);
-        //p_two = AddNewNodeSorted(p_two, x);
-        p = addNewNode(p, x);
-    }
-    scanf ("%d", &z);
-    p = addNewNode(p, z);
-
-    printf("Priting linked List BEFORE reverse it.\n");
-    printList(p);
-    
-    return 0;
-}
-//1 3 5 7 9
 
 
 /// sorted thing lin

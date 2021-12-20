@@ -22,7 +22,8 @@
         "chrono": "c",
         "sstream": "c",
         "iosfwd": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "type_traits": "c"
     },
     //"C_Cpp.errorSquiggles": "Disabled"
 }
