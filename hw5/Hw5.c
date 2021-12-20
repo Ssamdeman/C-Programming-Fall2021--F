@@ -17,15 +17,17 @@ void print_tree_Inorder(struct TREENODE* tree){
     if( tree == NULL){
         return;
     }else{
-            print_tree_Inorder(tree->left);
-            printf("%s ", tree->word);
-            print_tree_Inorder(tree->right);
+        print_tree_Inorder(tree->left);
+        printf("%s ", tree->word);
+        print_tree_Inorder(tree->right); 
+        /* print_tree_Inorder(tree->left); // print all values in left subtree
+        print_tree_Inorder(tree->right); // print all values in right subtree
+        printf("%s ", tree->word); */
+        
     }
-
 }
 
 //comparison is working. but not all the tree is listing. 
-
 struct TREENODE* Insert(struct TREENODE* root, char* word){
     
     struct TREENODE* find_where_put_p;
@@ -33,7 +35,7 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
 
     //geeting the word in corrent type or node.
     struct TREENODE* in_coming_word;
-    in_coming_word = (struct TREENODE*)malloc(sizeof(struct TREENODE));
+    in_coming_word = malloc(sizeof(struct TREENODE));
     in_coming_word->word = malloc(strlen(word)+1);
     strcpy(in_coming_word->word, word);
     in_coming_word->right = NULL;
@@ -82,6 +84,11 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
    // printf("I am here");
     return root;
 }
+struct TREENODE* delete_Node(struct TREENODE* root, char* delete_word){
+   //deleting all the similar words and returning. 
+    
+
+}
 
 
 
@@ -99,13 +106,13 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
 
 int main (void){
 
-    char a_word[29];
+    char a_word[69];
     int ch;
     int i = 0;
     struct TREENODE* root = NULL;
     //root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
 
-    /* while(1){
+    while(1){
         ch = getchar();
         if(ch == '\n') break;
         if(ch == ' '){
@@ -116,8 +123,10 @@ int main (void){
             a_word[i] = ch;
             i++;
         }
-    } */
+    }
     //Insert()
+
+  /* 
     root = Insert(root, "hello");
     root = Insert(root, "1235");
     root = Insert(root, "world");
@@ -126,12 +135,24 @@ int main (void){
     root = Insert(root, "show");
     root = Insert(root, "me");
     root = Insert(root, "i");
+ */
     print_tree_Inorder(root);
 
+    //getting the words that need to be deleted.
 
-
-    
-
+    while(1){
+        ch = getchar();
+        if(ch == '\n') break;
+        if(ch == ' '){
+            a_word[i] = '\0';
+            root = delete_Node(root, a_word);
+            i = 0;
+        }else{
+            a_word[i] = ch;
+            i++;
+        }
+    }
+    delete_Node(root)
     //Binary Tree. takes in Sorted. 
         //1) first the inpute and then put in the binery tree. https://hackr.io/blog/binary-search-in-c
 }

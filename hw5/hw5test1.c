@@ -22,9 +22,11 @@ typedef struct TREENODE NODE;
         return;
     }
     else {
-        printTree_InOrder(r->left); // print all values in left subtree
+        printTree_InOrder(r->right); // print all values in left subtree
+
         printf("%d ", r->value);
-        printTree_InOrder(r->right); // print all values in right subtree
+
+        printTree_InOrder(r->left); // print all values in right subtree
     }
 }
 /*
@@ -58,7 +60,7 @@ void addValue2Tree( struct TREENODE** list, int x){
 }
  */
 
-
+// this code not priting in order;
 NODE* addNode2Tree(NODE* r, int x) {
     // r: root pointer of the tree
     // x: value to add into this tree
@@ -121,19 +123,18 @@ int main (void){
         //thinkg all the node is randomly craeted in the memory and only way to access to the beggining is this root.
     int r;
 
-    /* while(1){
+    while(1){
         if(scanf("%d",&r) == EOF) break;
         //add the value.
-        addValue2Tree(&root, r);
+        root = addNode2Tree(root, r);
         //print values increaseing order;  
-    } */
-
-    root = addNode2Tree(root, 10);
+    }
+   /*  root = addNode2Tree(root, 5);
     root = addNode2Tree(root, 3);
-    root = addNode2Tree(root, 5);
+    root = addNode2Tree(root, 10);
     root = addNode2Tree(root, 1);
     root = addNode2Tree(root, 7);
-    root = addNode2Tree(root, 2);
+    root = addNode2Tree(root, 2); */
     printTree_InOrder(root); 
 
     /* addValue2Tree(&root, 10);
