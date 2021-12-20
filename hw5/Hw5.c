@@ -78,7 +78,7 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
             find_where_put_p->left = in_coming_word;
         }
     }
-    
+
    // printf("I am here");
     return root;
 }
@@ -124,8 +124,8 @@ int main (void){
     root = Insert(root, "here");
     root = Insert(root, "shit");
     root = Insert(root, "show");
-    root = Insert(root, "show");
-    root = Insert(root, "show");
+    root = Insert(root, "me");
+    root = Insert(root, "i");
     print_tree_Inorder(root);
 
 
