@@ -80,8 +80,9 @@ NODE* Delete(NODE *root, char* data) {
 }
 
 
+
 void add_new_node(NODE** address_root, char*  word){
-    
+
     if(address_root == NULL) return;
     NODE* root = *address_root;
 
@@ -111,7 +112,6 @@ void add_new_node(NODE** address_root, char*  word){
 }
 
 
-
 int main(void){
 
     char a_word[10000];
@@ -121,6 +121,7 @@ int main(void){
 
     ch = getchar();
      while(1){
+        //if( ch == ' ')
         if(ch == ' '|| ch == '\n' || ch == EOF){
             a_word[i] = '\0';
             add_new_node(&root, a_word);
@@ -133,24 +134,29 @@ int main(void){
         ch = getchar();
     }
     //original.
-    NODE* temporal = getLeftMostNode(root);
-    //printf("Strarting the Code... \n");
-    //printf("Original \n");
-    //printTreeIncreasingOrder(root);
-    root = Delete(root, temporal->word);
-   // printf("\nfirst modified \n");
-    //printTreeIncreasingOrder(root);
+    NODE* temporal;
     temporal = getLeftMostNode(root);
-    //printf("\nsecond modified \n");
-    root = Delete(root, temporal->word);
-    //printTreeIncreasingOrder(root);
+    //printf("Strarting the Code... \n");
+    printf("Original\n");
+    printTreeIncreasingOrder(root);
+    if(temporal != NULL) {
+        root = Delete(root, temporal->word);
+        // printf("\nfirst modified \n");
+        //printTreeIncreasingOrder(root);
+    }
+    temporal = getLeftMostNode(root);
+    if(temporal != NULL) root = Delete(root, temporal->word);
+
     temporal = getLeftMostNode(root);
     if(temporal == NULL) {
         return 0;
     }else{
+        printf("\n");
         printf("%s", temporal->word);
+        printf("\n");
 
     }
+    
    
     
 
