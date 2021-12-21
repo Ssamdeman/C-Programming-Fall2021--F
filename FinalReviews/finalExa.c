@@ -19,9 +19,9 @@ void printTreeIncreasingOrder(NODE* root) {
     
     // print the root
    // if (isRightMostNode(root) == 1)
-        printf("%s", root->word);
+        printf("%s-", root->word);
     //else
-        printf("%s,", root->word);
+        //printf("%s,", root->word);
     
     // print all values on the right subtree
     printTreeIncreasingOrder(root->right);
@@ -84,4 +84,11 @@ int main(void){
         }
         ch = getchar();
     }
+    printTreeIncreasingOrder(root);
+
+
+
+
+
+
 }
