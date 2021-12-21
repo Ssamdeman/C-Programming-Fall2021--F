@@ -25,7 +25,8 @@
         "__locale": "c",
         "type_traits": "c",
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "finalExam.C": "cpp"
     },
     //"C_Cpp.errorSquiggles": "Disabled"
 }

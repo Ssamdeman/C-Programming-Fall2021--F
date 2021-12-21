@@ -14,17 +14,25 @@ struct TREENODE{
 //printing is working well.
 void print_tree_Inorder(struct TREENODE* tree){
     //printf("I am here");
-    if( tree == NULL){
+      if (tree != NULL) {
+        inorder(tree->left);
+        printf("%d \n", tree->word);
+        inorder(tree->right);
+    }
+
+
+
+
+/*     if( tree == NULL){
         return;
     }else{
         print_tree_Inorder(tree->left);
         printf("%s ", tree->word);
-        print_tree_Inorder(tree->right); 
+        print_tree_Inorder(tree->right);  */
         /* print_tree_Inorder(tree->left); // print all values in left subtree
         print_tree_Inorder(tree->right); // print all values in right subtree
         printf("%s ", tree->word); */
-        
-    }
+    
 }
 
 /* Given a non-empty binary search
