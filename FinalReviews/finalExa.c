@@ -152,7 +152,7 @@ int main(void){
         return 0;
     }else{
         printf("\n");
-        printf("%s", temporal->word);
+        printf("%s ", temporal->word);
         printf("\n");
 
     }
