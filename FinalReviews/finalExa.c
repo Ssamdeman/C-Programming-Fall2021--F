@@ -19,13 +19,30 @@ void printTreeIncreasingOrder(NODE* root) {
     
     // print the root
    // if (isRightMostNode(root) == 1)
-        printf("%s-", root->word);
+        printf("%s ", root->word);
     //else
         //printf("%s,", root->word);
-    
     // print all values on the right subtree
     printTreeIncreasingOrder(root->right);
 }
+
+NODE* getLeftMostNode(NODE *root) {
+    // return the pointer to the right most node
+    if (root == NULL) return NULL;
+    NODE *p = root;
+    while (p->left != NULL)
+        p = p->left;
+    return p;
+}
+
+char* minValue(NODE* root) {
+    // return min value
+    // find the left most node
+    // return its v5alue
+    NODE *p = getLeftMostNode(root);
+    return p->word;
+}
+
 
 
 
