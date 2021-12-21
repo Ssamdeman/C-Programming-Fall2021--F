@@ -137,9 +137,6 @@ struct TREENODE* delete_Node(struct TREENODE* root, char* delete_word){
 
 
 
-   
-
-    
 
 
 }
@@ -164,6 +161,7 @@ int main (void){
     int ch;
     int i = 0;
     struct TREENODE* root = NULL;
+    struct TREENODE* root_two = NULL;// here is the original one. 
     //root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
 
     while(1){
@@ -172,6 +170,7 @@ int main (void){
         if(ch == ' '){
             a_word[i] = '\0';
             root = Insert(root, a_word);
+            root_two = Insert(root, a_word);
             i = 0;
         }else{
             a_word[i] = ch;
@@ -190,10 +189,7 @@ int main (void){
     root = Insert(root, "me");
     root = Insert(root, "i");
  */
-    print_tree_Inorder(root);
-
     //getting the words that need to be deleted.
-
     while(1){
         ch = getchar();
         if(ch == '\n') break;
@@ -206,9 +202,14 @@ int main (void){
             i++;
         }
     }
-    delete_Node(root, "hello");
-    //Binary Tree. takes in Sorted. 
-        //1) first the inpute and then put in the binery tree. https://hackr.io/blog/binary-search-in-c
+    print_tree_Inorder(root_two);
+    printf("\n");
+    print_tree_Inorder(root);
+
+
+   
+
+   
 }
 
  
