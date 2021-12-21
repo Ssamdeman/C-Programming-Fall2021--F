@@ -52,16 +52,17 @@ int main(void){
     int i = 0;
     struct TREENODE* root = NULL;
 
-     while(1){
-        ch = getchar();
-        if(ch == '\n') break;
-        if(ch == ' '){
+    ch = getchar();
+     while(ch != EOF){
+
+        if(ch == ' ' || ch == '\n'){
             a_word[i] = '\0';
-            root = Insert(root, a_word);
+            add_new_node(&root, a_word);
             i = 0;
         }else{
             a_word[i] = ch;
             i++;
         }
+        ch = getchar();
     }
 }
