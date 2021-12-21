@@ -120,9 +120,8 @@ int main(void){
     struct TREENODE* root = NULL;
 
     ch = getchar();
-     while(ch != EOF){
-
-        if(ch == ' ' || ch == '\n'){
+     while(1){
+        if(ch == ' '|| ch == '\n' || ch == EOF){
             a_word[i] = '\0';
             add_new_node(&root, a_word);
             i = 0;
@@ -130,6 +129,7 @@ int main(void){
             a_word[i] = ch;
             i++;
         }
+        if(ch == EOF) break;
         ch = getchar();
     }
     //original.
