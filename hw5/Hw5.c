@@ -170,7 +170,7 @@ int main (void){
         if(ch == ' '){
             a_word[i] = '\0';
             root = Insert(root, a_word);
-            root_two = Insert(root, a_word);
+            root_two = Insert(root_two, a_word);
             i = 0;
         }else{
             a_word[i] = ch;
