@@ -51,11 +51,12 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
 
     //geeting the word in corrent type or node.
     struct TREENODE* in_coming_word;
-    in_coming_word = malloc(sizeof(struct TREENODE));
+    in_coming_word = (struct TREENODE*) malloc(sizeof(struct TREENODE));
     in_coming_word->word = malloc(strlen(word)+1);
     strcpy(in_coming_word->word, word);
     in_coming_word->right = NULL;
     in_coming_word->left = NULL;
+    in_coming_word->position = NULL;
 
     //comparing and inserting the word.
     if(root == NULL){
@@ -92,9 +93,11 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
 
         if(new_word_compared_two < 0  ){
             find_where_put_p->right = in_coming_word;
+            in_coming_word->position = find_where_put_p;
         }
         else if (new_word_compared_two > 0){
             find_where_put_p->left = in_coming_word;
+            in_coming_word->position = find_where_put_p;
         }
     }
 
