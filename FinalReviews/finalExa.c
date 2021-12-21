@@ -23,12 +23,10 @@ void printTreeIncreasingOrder(NODE* root) {
         //printf("%s,", root->word);
     // print all values on the right subtree
     printTreeIncreasingOrder(root->right);
-    
 }
 
-
 NODE* getLeftMostNode(NODE *root) {
-    // return the pointer to the right most node
+    // return the pointer to the left most node
     if (root == NULL) return NULL;
     NODE *p = root;
     while (p->left != NULL)
@@ -36,15 +34,50 @@ NODE* getLeftMostNode(NODE *root) {
     return p;
 }
 
-char* minValue(NODE* root) {
-    // return min value
-    // find the left most node
-    // return its v5alue
-    NODE *p = getLeftMostNode(root);
-    return p->word;
+NODE* FindMin(NODE* root)
+{
+    if (root == NULL) return NULL;
+	while(root->left != NULL) root = root->left;
+	return root;
 }
 
+NODE* Delete(NODE *root, char* data) {
+	if(root == NULL) return root; 
 
+    int compared_value = strcmp(root->word, data); 
+
+	if(compared_value > 0) root->left = Delete(root->left,data);
+
+	else if (compared_value < 0) 
+        root->right = Delete(root->right,data);
+	// Wohoo... I found you, Get ready to be deleted	
+	else {
+
+		// Case 1:  No child
+		if(root->left == NULL && root->right == NULL) { 
+			free(root);
+			root = NULL;
+		}
+		//Case 2: One child 
+		else if(root->left == NULL) {
+			NODE *temp = root;
+			root = root->right;
+			free(temp);
+		}
+		else if(root->right == NULL) {
+			NODE *temp = root;
+			root = root->left;
+			free (temp);
+		}
+		// case 3: 2 children
+		else { 
+			NODE *temp = FindMin(root->right);
+            strcpy(root->word, temp->word);
+			root->right = Delete(root->right, temp->word);
+		}
+	}
+	return root;
+}
 
 
 void add_new_node(NODE** address_root, char*  word){
@@ -79,9 +112,6 @@ void add_new_node(NODE** address_root, char*  word){
 
 
 
-
-
-
 int main(void){
 
     char a_word[10000];
@@ -102,10 +132,26 @@ int main(void){
         }
         ch = getchar();
     }
+    //original.
+    NODE* temporal = getLeftMostNode(root);
+    printf("Strarting the Code... \n");
+    printf("Original \n");
     printTreeIncreasingOrder(root);
+    root = Delete(root, temporal->word);
+    printf("first modified \n");
+    printTreeIncreasingOrder(root);
+    temporal = getLeftMostNode(root);
+    printf("\n second modified \n");
+    root = Delete(root, temporal->word);
+    //printTreeIncreasingOrder(root);
+    printf("%s", root->left->word);
 
 
 
+
+
+//line 1
+//line whatever here
 
 
 
