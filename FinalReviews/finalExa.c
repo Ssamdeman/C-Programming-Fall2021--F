@@ -10,6 +10,25 @@ struct TREENODE {
 };
 typedef struct TREENODE NODE;
 
+
+void printTreeIncreasingOrder(NODE* root) {
+    if (root == NULL) return;
+    
+    // print all the values on left subtree
+    printTreeIncreasingOrder(root->left);
+    
+    // print the root
+   // if (isRightMostNode(root) == 1)
+        printf("%s", root->word);
+    //else
+        printf("%s,", root->word);
+    
+    // print all values on the right subtree
+    printTreeIncreasingOrder(root->right);
+}
+
+
+
 void add_new_node(NODE** address_root, char*  word){
     
     if(address_root == NULL) return;
