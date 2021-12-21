@@ -5,7 +5,67 @@
 //creating binary search tree;
 //save all the numbers and print them in order and reverse order.
 
-struct BINARY_SEARCH_NODE {
+struct node {
+    int key;
+    struct node *left, *right;
+};
+ 
+struct node* newNode(int item)
+{
+    struct node* temp
+        = (struct node*)malloc(sizeof(struct node));
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+ 
+void inorder(struct node* root)
+{
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d \n", root->key);
+        inorder(root->right);
+    }
+}
+ 
+struct node* insert(struct node* node, int key)
+{
+    if (node == NULL)
+        return newNode(key);
+ 
+    if (key < node->key)
+        node->left = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);
+ 
+    /* return the (unchanged) node pointer */
+    return node;
+}
+ 
+// Driver Code
+int main()
+{
+    struct node* root = NULL;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 70);
+    insert(root, 60);
+    insert(root, 80);
+ 
+    // print inoder traversal of the BST
+    inorder(root);
+ 
+    return 0;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              //second attempt                              */
+/* -------------------------------------------------------------------------- */
+
+/* struct BINARY_SEARCH_NODE {
     int value;
     
     struct BINARY_SEARCH_NODE* right;
@@ -13,7 +73,7 @@ struct BINARY_SEARCH_NODE {
     struct BINARY_SEARCH_NODE* parent;
 };
 
-struct BINARY_SEARCH_NODE* new_node(struct BINARY_SEARCH_NODE* root, int x){
+struct BINARY_SEARCH_NODE* new_node(struct BINARY_SEARCH_NODE* root, int x) {
 
     struct BINARY_SEARCH_NODE* temp;
     temp = malloc(sizeof(struct BINARY_SEARCH_NODE));
@@ -43,32 +103,33 @@ void InOrder(struct BINARY_SEARCH_NODE* root){
         return;
     }
     else{
-        
+
         InOrder(root->left);
-        printf("%d,", root->value);
+        printf("%d \n", root->value);
         InOrder(root->left);
 
         
     }
 }
 
+ */
 
-
-int main(void){
+/* int main(void){
 
     struct BINARY_SEARCH_NODE* root = NULL;
 
     root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    insert(root, 60);
-    insert(root, 80);
-    
+    root = insert(root, 30);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    root = insert(root, 70);
+    root = insert(root, 60);
+    root = insert(root, 80);
+    InOrder(root);
     
 }
 
+ */
 
 
 
@@ -119,8 +180,9 @@ int main(void){
 
 
 
-
-
+/* -------------------------------------------------------------------------- */
+/*                               //first attempt                              */
+/* -------------------------------------------------------------------------- */
 
 /* 
 struct BINARY_SEARCH_NODE* add_new_tree(struct BINARY_SEARCH_NODE* root, int x ){
@@ -220,4 +282,3 @@ int main(void){
 
 
  */
-}
