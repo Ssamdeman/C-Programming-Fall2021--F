@@ -46,5 +46,22 @@ void add_new_node(NODE** address_root, char*  word){
 
 
 int main(void){
-    printf("hello World");
+
+    char a_word[10000];
+    int ch;
+    int i = 0;
+    struct TREENODE* root = NULL;
+
+     while(1){
+        ch = getchar();
+        if(ch == '\n') break;
+        if(ch == ' '){
+            a_word[i] = '\0';
+            root = Insert(root, a_word);
+            i = 0;
+        }else{
+            a_word[i] = ch;
+            i++;
+        }
+    }
 }
