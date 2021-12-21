@@ -134,17 +134,17 @@ int main(void){
     }
     //original.
     NODE* temporal = getLeftMostNode(root);
-    printf("Strarting the Code... \n");
-    printf("Original \n");
-    printTreeIncreasingOrder(root);
+    //printf("Strarting the Code... \n");
+    //printf("Original \n");
+    //printTreeIncreasingOrder(root);
     root = Delete(root, temporal->word);
-    printf("first modified \n");
-    printTreeIncreasingOrder(root);
+   // printf("\nfirst modified \n");
+    //printTreeIncreasingOrder(root);
     temporal = getLeftMostNode(root);
-    printf("\n second modified \n");
+    //printf("\nsecond modified \n");
     root = Delete(root, temporal->word);
     //printTreeIncreasingOrder(root);
-    printf("%s", root->left->word);
+    printf("%s", root->word);
 
 
 
