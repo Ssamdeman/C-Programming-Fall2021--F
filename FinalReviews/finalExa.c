@@ -42,7 +42,8 @@ NODE* FindMin(NODE* root)
 }
 
 NODE* Delete(NODE *root, char* data) {
-	if(root == NULL) return root; 
+	
+    if(root == NULL) return root; 
 
     int compared_value = strcmp(root->word, data); 
 
@@ -50,7 +51,6 @@ NODE* Delete(NODE *root, char* data) {
 
 	else if (compared_value < 0) 
         root->right = Delete(root->right,data);
-	// Wohoo... I found you, Get ready to be deleted	
 	else {
 
 		// Case 1:  No child
@@ -144,7 +144,15 @@ int main(void){
     //printf("\nsecond modified \n");
     root = Delete(root, temporal->word);
     //printTreeIncreasingOrder(root);
-    printf("%s", root->word);
+    temporal = getLeftMostNode(root);
+    if(temporal == NULL) {
+        return 0;
+    }else{
+        printf("%s", temporal->word);
+
+    }
+   
+    
 
 
 
