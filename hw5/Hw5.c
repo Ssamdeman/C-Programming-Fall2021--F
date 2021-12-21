@@ -27,6 +27,22 @@ void print_tree_Inorder(struct TREENODE* tree){
     }
 }
 
+/* Given a non-empty binary search
+   tree, return the node
+   with minimum key value found in
+   that tree. Note that the
+   entire tree does not need to be searched. */
+struct TREENODE* minValueNode(struct TREENODE* node)
+{
+    struct TREENODE* current = node;
+ 
+    /* loop down to find the leftmost leaf */
+    while (current && current->left != NULL)
+        current = current->left;
+ 
+    return current;
+}
+
 //comparison is working. but not all the tree is listing. 
 struct TREENODE* Insert(struct TREENODE* root, char* word){
     
@@ -50,6 +66,7 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
             //comparing the value;
             int new_word_compared = strcmp(find_where_put_p->word, in_coming_word->word);
             //Finding where to put the new value using the find_where_put_p. 
+            
             if(new_word_compared > 0){
                 if(find_where_put_p->left == NULL){
                     break;
@@ -86,7 +103,44 @@ struct TREENODE* Insert(struct TREENODE* root, char* word){
 }
 struct TREENODE* delete_Node(struct TREENODE* root, char* delete_word){
    //deleting all the similar words and returning. 
+   if (root == NULL) return root;
+
+    int compared_value = strcmp(root->word, delete_word);
+
+    if(compared_value > 0){
+        root->left = delete_Node(root->left, delete_word);
+
+    }else if( compared_value < 0){
+        root->right = delete_Node(root->right, delete_word);
     
+    }else{ 
+        /// if the root is deleted then this:
+        if(root->left == NULL){
+            struct TREENODE* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if( root->right == NULL) {
+            struct TREENODE* temp_two = root->left;
+            free(root);
+            return temp_two;
+        }
+
+        struct TREENODE* temp_three = minValueNode(root->right);
+            root->word = temp_three->word;
+
+            root->word = temp_three->word;
+
+            root->right = delete_Node(root->right,temp_three->word);
+    }
+    return root;
+
+
+
+   
+
+    
+
 
 }
 
@@ -152,7 +206,7 @@ int main (void){
             i++;
         }
     }
-    delete_Node(root)
+    delete_Node(root, "hello");
     //Binary Tree. takes in Sorted. 
         //1) first the inpute and then put in the binery tree. https://hackr.io/blog/binary-search-in-c
 }
