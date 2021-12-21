@@ -16,15 +16,16 @@ void printTreeIncreasingOrder(NODE* root) {
     
     // print all the values on left subtree
     printTreeIncreasingOrder(root->left);
-    
     // print the root
    // if (isRightMostNode(root) == 1)
-        printf("%s ", root->word);
+    printf("%s ", root->word);
     //else
         //printf("%s,", root->word);
     // print all values on the right subtree
     printTreeIncreasingOrder(root->right);
+    
 }
+
 
 NODE* getLeftMostNode(NODE *root) {
     // return the pointer to the right most node
