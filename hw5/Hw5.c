@@ -48,16 +48,20 @@ struct LINKED* addNewNode(struct LINKED *first, char* word) {
 void print_list(struct LINKED* list){
     struct LINKED* current;
     current = list;
-
+    if( list == NULL) return;  
     while(current != NULL){
         printf("%s ", current->word);
         current = current->next;
-        if(current == NULL) printf("\n");
+        if(current->next == NULL) break;
+       // if(current == NULL) printf("\n");
     }
+    printf("%s", current->word);
+
 }
 
 struct LINKED* reMove(struct LINKED *first, char* word){
     // lengthlist - 
+    if(first == NULL) return first;
     struct LINKED *p;
     struct LINKED *q;
     p = first; // pointer to the node that we want to delete
@@ -72,15 +76,16 @@ struct LINKED* reMove(struct LINKED *first, char* word){
         q = p;
         p = p->next;
     }
-    printf("Word: %s ", word);
+    //printf("Word: %s ", word);
    
     if(p != NULL){
-        printf("p->Word: %s ", p->word);
+        //printf("p->Word: %s ", p->word);
+        if(p == first){
+            first = first->next;
+        }
+        else
         if(q != NULL){
             q->next = p->next;
-
-        }else{
-            first = first->next;
         }
         //delete the p;
         free(p);
@@ -96,6 +101,7 @@ void printTreeIncreasingOrder(NODE* root) {
     if (root == NULL) return;
     
     printTreeIncreasingOrder(root->left);
+    
     printf("%s ", root->word);
     printTreeIncreasingOrder(root->right);
 }
@@ -185,6 +191,7 @@ void add_new_node(NODE** address_root, char*  word){
     }
 
 }
+NODE* 
 
 
 
