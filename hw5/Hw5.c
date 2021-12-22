@@ -13,6 +13,81 @@ struct TREENODE {
     struct TREENODE* parent; 
 };
 typedef struct TREENODE NODE;
+struct LINKED {
+    char* word;
+    struct LINKED* next;
+    
+};
+struct LINKED* addNewNode(struct LINKED *first, char* word) {
+    // add a new node "new" to the list starting at address "first"
+    // return the updated list
+    
+    struct LINKED *new_node;
+    new_node = malloc(sizeof(struct LINKED));
+    new_node->word = malloc(strlen(word)+1);
+    strcpy(new_node->word, word);
+    (*new_node).next = NULL;
+    
+    if (first == NULL) {
+        // list is empty
+        first = new_node;
+    }
+    else {
+        struct LINKED* last;
+        last = first;
+        while(1) {
+            if ((*last).next == NULL) break;
+            last = (*last).next;
+        }
+        (*last).next = new_node;
+        last = new_node;
+    }
+    return first;
+}
+
+void print_list(struct LINKED* list){
+    struct LINKED* current;
+    current = list;
+
+    while(current != NULL){
+        printf("%s ", current->word);
+        current = current->next;
+        if(current == NULL) printf("\n");
+    }
+}
+
+struct LINKED* reMove(struct LINKED *first, char* word){
+    // lengthlist - 
+    struct LINKED *p;
+    struct LINKED *q;
+    p = first; // pointer to the node that we want to delete
+    q = first; // pointer to the previous node of the p
+    //printf("I am here %d \n", position);
+    
+    while(p != NULL){
+        int compared_value = strcmp(p->word, word); 
+        if(compared_value == 0 ){
+            break;
+        }
+        q = p;
+        p = p->next;
+    }
+   
+    if(p != NULL){
+        if(q != NULL){
+            q->next = p->next;
+
+        }else{
+            first == NULL;
+        }
+        //delete the p;
+        free(p);
+        p = NULL;
+    }
+
+    return first;
+}
+
 
 
 void printTreeIncreasingOrder(NODE* root) {
@@ -99,7 +174,7 @@ void add_new_node(NODE** address_root, char*  word){
     int compared = strcmp(root->word, new_p->word);
     if(compared < 0 ){
         add_new_node(&(root->right), word);
-        root->right->parent = root;
+        root->right->parent = root;/// do
 
     }else if (compared > 0 ){
         add_new_node(&(root->left), word);
@@ -110,6 +185,7 @@ void add_new_node(NODE** address_root, char*  word){
 }
 
 
+
 int main(void){
 
     char a_word[10000];
@@ -117,14 +193,15 @@ int main(void){
     int i = 0;
     struct TREENODE* root = NULL;//original
     struct TREENODE* modified = NULL;
+    struct LINKED* head = NULL;
 
     ch = getchar();
      while(ch != EOF ){
         //if( ch == ' ')
-        if(ch == ' ' || ch =='\n'|| ch == " "){
+        if(ch == ' ' || ch =='\n'){
             a_word[i] = '\0';
             add_new_node(&root, a_word);
-            add_new_node(&modified, a_word);
+            head = addNewNode(head, a_word);
             //printf("%s-", a_word);
             i = 0;
         }else{
@@ -135,6 +212,8 @@ int main(void){
 
         ch = getchar();
     }
+    //printTreeIncreasingOrder(root);
+
     //getting the second line.
     ch = getchar();
      while(ch != EOF ){
@@ -143,7 +222,7 @@ int main(void){
             a_word[i] = '\0';
             //add_new_node(&modified, a_word);
             //add_new_node(&root, a_word);
-            modified = Delete(modified, a_word);
+            head = reMove(head, a_word);
             //printf("%s-", a_word);
             i = 0;
         }else{
@@ -154,12 +233,15 @@ int main(void){
 
         ch = getchar();
     }
+
+
+
     if(root == NULL){
         return 0;
     }else{
         printTreeIncreasingOrder(root);
         printf("\n");
-        printTreeIncreasingOrder(modified);
+        print_list(head);
     }
 
     return 0;

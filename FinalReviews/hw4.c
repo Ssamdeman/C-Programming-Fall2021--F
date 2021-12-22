@@ -5,7 +5,7 @@
 struct LINKED{
     int value;
     struct LINKED *next;
-} ;
+};
 
 //My logic was right but still cannot add it infront.
 struct LINKED* add_in_front(struct LINKED* linklist, int x){
