@@ -2,231 +2,166 @@
 #include<stdlib.h>
 #include <string.h>
 
-
-
-struct TREENODE{
+#include<stdio.h>
+#include<stdlib.h>
+#include <string.h>
+ 
+struct TREENODE {
     char* word;
-    int position; // aka parent.
-    struct TREENODE* right;
-    struct TREENODE* left;
+    struct TREENODE* left; 
+    struct TREENODE* right; 
+    struct TREENODE* parent; 
 };
-
-//printing is working well.
-void print_tree_Inorder(struct TREENODE* tree){
-    //printf("I am here");
-      if (tree != NULL) {
-        inorder(tree->left);
-        printf("%d \n", tree->word);
-        inorder(tree->right);
-    }
+typedef struct TREENODE NODE;
 
 
-
-
-/*     if( tree == NULL){
-        return;
-    }else{
-        print_tree_Inorder(tree->left);
-        printf("%s ", tree->word);
-        print_tree_Inorder(tree->right);  */
-        /* print_tree_Inorder(tree->left); // print all values in left subtree
-        print_tree_Inorder(tree->right); // print all values in right subtree
-        printf("%s ", tree->word); */
+void printTreeIncreasingOrder(NODE* root) {
+    if (root == NULL) return;
     
+    printTreeIncreasingOrder(root->left);
+    printf("%s ", root->word);
+    printTreeIncreasingOrder(root->right);
 }
 
-/* Given a non-empty binary search
-   tree, return the node
-   with minimum key value found in
-   that tree. Note that the
-   entire tree does not need to be searched. */
-struct TREENODE* minValueNode(struct TREENODE* node)
+/* NODE* getLeftMostNode(NODE *root) {
+    // return the pointer to the left most node
+    if (root == NULL) return NULL;
+    NODE *p = root;
+    while (p->left != NULL)
+        p = p->left;
+    return p;
+} */
+
+NODE* FindMin(NODE* root)
 {
-    struct TREENODE* current = node;
- 
-    /* loop down to find the leftmost leaf */
-    while (current && current->left != NULL)
-        current = current->left;
- 
-    return current;
+    if (root == NULL) return NULL;
+	while(root->left != NULL) root = root->left;
+	return root;
 }
 
-//comparison is working. but not all the tree is listing. 
-struct TREENODE* Insert(struct TREENODE* root, char* word){
-    
-    struct TREENODE* find_where_put_p;
-    find_where_put_p  = root; //pointer to compare and move around the tree;
+NODE* Delete(NODE *root, char* data) {
+	
+    if(root == NULL) return root; 
 
-    //geeting the word in corrent type or node.
-    struct TREENODE* in_coming_word;
-    in_coming_word = (struct TREENODE*) malloc(sizeof(struct TREENODE));
-    in_coming_word->word = malloc(strlen(word)+1);
-    strcpy(in_coming_word->word, word);
-    in_coming_word->right = NULL;
-    in_coming_word->left = NULL;
-    in_coming_word->position = NULL;
+    int compared_value = strcmp(root->word, data); 
 
-    //comparing and inserting the word.
-    if(root == NULL){
-        root = in_coming_word;
-    }else{
-        //this while loop is working.
-        while(1){
-            //comparing the value;
-            int new_word_compared = strcmp(find_where_put_p->word, in_coming_word->word);
-            //Finding where to put the new value using the find_where_put_p. 
-            
-            if(new_word_compared > 0){
-                if(find_where_put_p->left == NULL){
-                    break;
-                }else{
-                    find_where_put_p = find_where_put_p->left;
-                    /// We need to check again if the new find_where_put_p is has children.
-                }
-            } 
-            else if (find_where_put_p < 0 ){
-                // need to enter a new while since we need to check all the children of the left area.?
-                if(find_where_put_p->right == NULL){
-                    break;
-                }else{
-                    find_where_put_p = find_where_put_p->right;
-                }
-            }
-            else{
-                break;
-            }   
-        }
+	if(compared_value > 0) root->left = Delete(root->left,data);
 
-        int new_word_compared_two = strcmp(find_where_put_p->word, in_coming_word->word);
+	else if (compared_value < 0) 
+        root->right = Delete(root->right,data);
+	else {
 
-        if(new_word_compared_two < 0  ){
-            find_where_put_p->right = in_coming_word;
-            in_coming_word->position = find_where_put_p;
-        }
-        else if (new_word_compared_two > 0){
-            find_where_put_p->left = in_coming_word;
-            in_coming_word->position = find_where_put_p;
-        }
+		// Case 1:  No child
+		if(root->left == NULL && root->right == NULL) { 
+			free(root);
+			root = NULL;
+		}
+		//Case 2: One child 
+		else if(root->left == NULL) {
+			NODE *temp = root;
+			root = root->right;
+			free(temp);
+		}
+		else if(root->right == NULL) {
+			NODE *temp = root;
+			root = root->left;
+			free (temp);
+		}
+		// case 3: 2 children
+		else { 
+			NODE *temp = FindMin(root->right);
+            strcpy(root->word, temp->word);
+			root->right = Delete(root->right, temp->word);
+		}
+	}
+	return root;
+}
+
+
+
+void add_new_node(NODE** address_root, char*  word){
+
+    if(address_root == NULL) return;
+    NODE* root = *address_root;
+
+    //created a new node.
+    NODE* new_p = malloc(sizeof(NODE));
+    new_p->word = malloc(strlen(word)+1);
+    strcpy(new_p->word, word);
+    new_p->left = NULL;
+    new_p->right = NULL;
+    new_p->parent=NULL;
+
+    if (root == NULL) {
+        *address_root = new_p;
+        return;
+    }
+    int compared = strcmp(root->word, new_p->word);
+    if(compared < 0 ){
+        add_new_node(&(root->right), word);
+        root->right->parent = root;
+
+    }else if (compared > 0 ){
+        add_new_node(&(root->left), word);
+        root->left->parent = root;
+
     }
 
-   // printf("I am here");
-    return root;
-}
-struct TREENODE* delete_Node(struct TREENODE* root, char* delete_word){
-   //deleting all the similar words and returning. 
-   if (root == NULL) return root;
-
-    int compared_value = strcmp(root->word, delete_word);
-
-    if(compared_value > 0){
-        root->left = delete_Node(root->left, delete_word);
-
-    }else if( compared_value < 0){
-        root->right = delete_Node(root->right, delete_word);
-    
-    }else{ 
-        /// if the root is deleted then this:
-        if(root->left == NULL){
-            struct TREENODE* temp = root->right;
-            free(root);
-            return temp;
-        }
-        else if( root->right == NULL) {
-            struct TREENODE* temp_two = root->left;
-            free(root);
-            return temp_two;
-        }
-
-        struct TREENODE* temp_three = minValueNode(root->right);
-            root->word = temp_three->word;
-
-            root->word = temp_three->word;
-
-            root->right = delete_Node(root->right,temp_three->word);
-    }
-    return root;
-
-
-
-
-
 }
 
 
+int main(void){
 
-
-
-//insirt and given root and word;
-
-
-//delete given root and word;
-
-//print in original ordered.
-//print the three in deleted version.
-
-
-
-int main (void){
-
-    char a_word[69];
+    char a_word[10000];
     int ch;
     int i = 0;
-    struct TREENODE* root = NULL;
-    struct TREENODE* root_two = NULL;// here is the original one. 
-    //root = (struct TREENODE*) malloc(sizeof(struct TREENODE*));
+    struct TREENODE* root = NULL;//original
+    struct TREENODE* modified = NULL;
 
-    while(1){
-        ch = getchar();
-        if(ch == '\n') break;
-        if(ch == ' '){
+    ch = getchar();
+     while(ch != EOF ){
+        //if( ch == ' ')
+        if(ch == ' ' || ch =='\n'|| ch == " "){
             a_word[i] = '\0';
-            root = Insert(root, a_word);
-            root_two = Insert(root_two, a_word);
+            add_new_node(&root, a_word);
+            add_new_node(&modified, a_word);
+            //printf("%s-", a_word);
             i = 0;
         }else{
             a_word[i] = ch;
             i++;
         }
-    }
-    //Insert()
+        if(ch =='\n') break;
 
-  /* 
-    root = Insert(root, "hello");
-    root = Insert(root, "1235");
-    root = Insert(root, "world");
-    root = Insert(root, "here");
-    root = Insert(root, "shit");
-    root = Insert(root, "show");
-    root = Insert(root, "me");
-    root = Insert(root, "i");
- */
-    //getting the words that need to be deleted.
-    while(1){
         ch = getchar();
-        if(ch == '\n') break;
-        if(ch == ' '){
+    }
+    //getting the second line.
+    ch = getchar();
+     while(ch != EOF ){
+        //if( ch == ' ')
+        if(ch == ' ' || ch =='\n'){
             a_word[i] = '\0';
-            root = delete_Node(root, a_word);
+            //add_new_node(&modified, a_word);
+            //add_new_node(&root, a_word);
+            modified = Delete(modified, a_word);
+            //printf("%s-", a_word);
             i = 0;
         }else{
             a_word[i] = ch;
             i++;
         }
+        if(ch =='\n') break;
+
+        ch = getchar();
     }
-    print_tree_Inorder(root_two);
-    printf("\n");
-    print_tree_Inorder(root);
+    if(root == NULL){
+        return 0;
+    }else{
+        printTreeIncreasingOrder(root);
+        printf("\n");
+        printTreeIncreasingOrder(modified);
+    }
 
+    return 0;
 
-   
-
-   
 }
-
- 
-
-/*
-hello world 123
-world 
-*/
-
