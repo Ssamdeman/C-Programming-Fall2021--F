@@ -72,13 +72,15 @@ struct LINKED* reMove(struct LINKED *first, char* word){
         q = p;
         p = p->next;
     }
+    printf("Word: %s ", word);
    
     if(p != NULL){
+        printf("p->Word: %s ", p->word);
         if(q != NULL){
             q->next = p->next;
 
         }else{
-            first == NULL;
+            first = first->next;
         }
         //delete the p;
         free(p);
