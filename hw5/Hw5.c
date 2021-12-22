@@ -187,11 +187,9 @@ void add_new_node(NODE** address_root, char*  word){
     }else if (compared > 0 ){
         add_new_node(&(root->left), word);
         root->left->parent = root;
-
     }
-
 }
-NODE* 
+
 
 
 
